@@ -12,7 +12,7 @@ import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
 import com.lithium.mineraloil.api.rest.RestAPIException;
-import com.whatbottle.data.ConversationStyles;
+import com.whatbottle.data.pojos.ConversationStyles;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

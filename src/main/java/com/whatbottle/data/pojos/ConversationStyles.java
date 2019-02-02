@@ -1,5 +1,11 @@
-package com.whatbottle.data;
+package com.whatbottle.data.pojos;
 
+
+/**
+ *
+ * @author gunaas
+ *
+ */
 
 public enum ConversationStyles {
     idea,

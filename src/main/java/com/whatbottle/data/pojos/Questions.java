@@ -1,4 +1,4 @@
-package com.whatbottle.data;
+package com.whatbottle.data.pojos;
 
 import com.whatbottle.util.Constants;
 import org.apache.commons.lang3.StringUtils;

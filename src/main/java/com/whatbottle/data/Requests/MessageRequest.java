@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MessageRequest {
+    String message;
 
     public MessageRequest(String message) {
         this.message = message;
@@ -12,5 +13,4 @@ public class MessageRequest {
     public MessageRequest() {
     }
 
-    String message;
 }

@@ -1,8 +1,10 @@
 com/whatbottle/controller/WhatbottleRestController.class
 com/whatbottle/util/WhatbottleUtils.class
 com/whatbottle/data/Requests/WebhookRequest.class
+com/whatbottle/service/Impl/WhatbottleserviceImpl$1.class
 com/whatbottle/StartApplication.class
 com/whatbottle/data/Order.class
+com/whatbottle/repository/TopicMessageRequestRepository.class
 com/whatbottle/util/LiaApiConnector.class
 com/whatbottle/util/WhatbottleHelper.class
 com/whatbottle/config/MyHealthIndicator.class
@@ -12,4 +14,5 @@ com/whatbottle/exception/WhatbottleException.class
 com/whatbottle/util/PostMesageToLIA.class
 com/whatbottle/service/Whatbottleservice.class
 com/whatbottle/service/Impl/WhatbottleserviceImpl.class
+com/whatbottle/data/Questions.class
 com/whatbottle/util/Constants.class
