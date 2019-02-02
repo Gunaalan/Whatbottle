@@ -10,7 +10,7 @@ import java.util.List;
 public interface Whatbottleservice {
     public ApiKeyAuth generateToken() throws Exception;
 
-    public MessageResponse postAMessage(MessageRequest messageRequest, String userId, boolean isChatMessage) throws Exception;
+    public MessageResponse postAMessage(MessageRequest messageRequest, String userId) throws Exception;
 
     public MessageResponse readAMessage(List<Message> messages)  throws Exception;
     }
