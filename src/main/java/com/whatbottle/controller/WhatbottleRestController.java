@@ -38,7 +38,7 @@ public class WhatbottleRestController {
     @RequestMapping(value = {"/postAMessage"}, method = RequestMethod.POST)
     public ResponseEntity<?> postAMessage(HttpServletRequest request, @RequestParam String userId, @NonNull @RequestBody MessageRequest messageRequest)
             throws Exception {
-        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId, false);
+        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId);
         return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
     }
 
