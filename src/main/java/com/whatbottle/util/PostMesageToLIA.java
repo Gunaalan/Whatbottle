@@ -12,37 +12,55 @@ import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
 import com.lithium.mineraloil.api.rest.RestAPIException;
+import com.whatbottle.data.models.TopicMessageRequest;
 import com.whatbottle.data.pojos.ConversationStyles;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 @Slf4j
+@Component
 public class PostMesageToLIA {
-    private LIAAPIConnection liaapiConnection;
+    private static LIAAPIConnection liaapiConnection;
 
-    PostMesageToLIA(LIAAPIConnection connection) {
+    @Value("${communityUrl}")
+    private String communityUrl;
+
+    @Value("${communityName}")
+    private String communityName;
+
+    @Value("${boardId}")
+    private String boardId;
+
+    @Value("${boardTitle}")
+    private String boardTitle;
+
+    @Value("${category}")
+    private String liaCategory;
+
+    @PostConstruct
+    private void PostMesageToLIA(LIAAPIConnection connection) {
         this.liaapiConnection = connection;
     }
 
     /*
      * Sample on how to use, need to remove later
      * */
-    public static void main(String args[]) {
+    public void postAMessageToCommunity(TopicMessageRequest topicMessageRequest) {
         User user = LiaApiConnector.getDefaultUser();
-        PostMesageToLIA postMesageToLIA = new PostMesageToLIA(LiaApiConnector.getLIAAPIConnectionV1(user, "automationresp1.qa.lithium.com", -1, "automationresp1"));
-
-        String boardId = "boardId2skkk6";
-        String boardTitle = "boardTitkkle";
-
-        Board board = postMesageToLIA.createLIABoard(postMesageToLIA.liaapiConnection, boardId, boardTitle, "hello1", ConversationStyles.forum);
-
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
+        Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
         Message message = Message.builder()
-                .subject("this is subject")
-                .body("This is body")
+                .subject("Topic#" + topicMessageRequest.getTopicId())
+                .body(topicMessageRequest.getMessageRequest().getMessage().toString())
                 .build();
-        postMesageToLIA.postMessage(postMesageToLIA.liaapiConnection, board, message);
+        postMessage(liaapiConnection, board, message);
     }
 
-    public  Board createBoard(BoardV2 boardV2) {
+    public Board createBoard(BoardV2 boardV2) {
         Board board = Board.builder()
                 .type(boardV2.getType())
                 .viewHref(boardV2.getViewHref())

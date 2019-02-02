@@ -1,5 +1,7 @@
 package com.whatbottle.util;
 
+import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.models.TopicMessageRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,5 +33,15 @@ import static io.jsonwebtoken.JwsHeader.KEY_ID;
 
 public class WhatbottleUtils {
 
+
+    public static TopicMessageRequest builder(MessageRequest messageRequest ) {
+        TopicMessageRequest topicMessageRequest = new TopicMessageRequest();
+        topicMessageRequest.setMessageRequest(messageRequest);
+        return topicMessageRequest;
+    }
+
+    public static void postReplyToCommunity(TopicMessageRequest topicMessageRequest) {
+
+    }
 
 }

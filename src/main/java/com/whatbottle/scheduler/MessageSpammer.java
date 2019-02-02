@@ -18,15 +18,15 @@ public class MessageSpammer {
     @Autowired
     WhatbottleHelper whatbottleHelper;
 
-    @Scheduled(fixedDelay = 1000)
-    public void scheduledMethod() {
-        MessagePost messagePost = new MessagePost();
-        messagePost.setRole("appMaker");
-        messagePost.setType(Enums.MessageTypeEnum.TEXT.toString());
-        messagePost.setText("Sorry! I spammed you enough! bubye :)");
-        System.out.println("Sorry! I spammed you enough! bubye :)");
-        whatbottleHelper.postAMessage(messagePost, "");
-    }
+//    @Scheduled(fixedDelay = 1000)
+//    public void scheduledMethod() {
+//        MessagePost messagePost = new MessagePost();
+//        messagePost.setRole("appMaker");
+//        messagePost.setType(Enums.MessageTypeEnum.TEXT.toString());
+//        messagePost.setText("Sorry! I spammed you enough! bubye :)");
+//        System.out.println("Sorry! I spammed you enough! bubye :)");
+//        whatbottleHelper.postAMessage(messagePost, "");
+//    }
 
-
+/* Do not uncomment unless you want to spam somebody */
 }

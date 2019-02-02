@@ -20,6 +20,6 @@ import java.util.List;
 public interface TopicMessageRequestRepository extends MongoRepository<TopicMessageRequest, String> {
     TopicMessageRequest save(TopicMessageRequest topicMessageRequest);
 
-    List<TopicMessageRequest> findAll();
+    List<TopicMessageRequest> findAllOrOrderByCreatedDate();
 
 }
