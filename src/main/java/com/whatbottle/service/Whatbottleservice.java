@@ -10,4 +10,9 @@ public interface Whatbottleservice {
     public ApiKeyAuth generateToken() throws Exception;
 
     public MessageResponse postAMessage(MessageRequest messageRequest, String userId) throws Exception;
-}
+
+    public MessageResponse readAMessage() throws Exception;
+
+    }
+
+

@@ -1,6 +1,7 @@
 package com.whatbottle.controller;
 
 import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.Requests.WebhookRequest;
 import com.whatbottle.service.Whatbottleservice;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.MessageResponse;
@@ -26,14 +27,6 @@ public class WhatbottleRestController {
     Whatbottleservice whatbottleservice;
 
 
-    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
-    public ResponseEntity<?> getPickerOrder(HttpServletRequest request)
-            throws Exception {
-
-        return new ResponseEntity<String>("healthy", HttpStatus.OK);
-
-    }
-
     @RequestMapping(value = {"/getJwtToken"}, method = RequestMethod.GET)
     public ResponseEntity<?> getJwtToken(HttpServletRequest request)
             throws Exception {
@@ -55,11 +48,12 @@ public class WhatbottleRestController {
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
 
-//    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
-//    public ResponseEntity<?> readAMessage(HttpServletRequest request)
-//            throws Exception {
-//
-//        return new ResponseEntity<String>("", HttpStatus.OK);
-//    }
+    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
+    public ResponseEntity<?> readAMessage(HttpServletRequest request, @RequestBody WebhookRequest webhookRequest)
+            throws Exception {
+        log.info(webhookRequest.toString());
+        //whatbottleservice.readAMessage(webhookRequest.getMessages());
+        return new ResponseEntity<String>("Done", HttpStatus.OK);
+    }
 }
 

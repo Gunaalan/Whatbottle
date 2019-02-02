@@ -6,12 +6,14 @@ import com.whatbottle.service.Whatbottleservice;
 import com.whatbottle.util.WhatbottleHelper;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.Enums;
+import io.smooch.client.model.Message;
 import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.List;
 
 @Service
 public class WhatbottleserviceImpl implements Whatbottleservice {
@@ -30,6 +32,12 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         return whatbottleHelper.postAMessage(messagePost, userId);
     }
 
+    public MessageResponse readAMessage(List<Message> messages) throws Exception{
+        
+    }
+
+
+
     private MessagePost constructTextMessage(String message) throws Exception {
         MessagePost messagePost = new MessagePost();
         messagePost.setRole("appMaker");
@@ -37,5 +45,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         messagePost.setText(message);
         return messagePost;
     }
+
+
 
 }
