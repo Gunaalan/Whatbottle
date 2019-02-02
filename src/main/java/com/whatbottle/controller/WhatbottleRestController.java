@@ -1,16 +1,17 @@
 package com.whatbottle.controller;
 
-import com.whatbottle.data.Order;
+import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.service.Whatbottleservice;
+import io.smooch.client.auth.ApiKeyAuth;
+import io.smooch.client.model.MessageResponse;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by gunaass
@@ -21,5 +22,44 @@ import java.util.*;
 @CrossOrigin
 public class WhatbottleRestController {
 
+    @Autowired
+    Whatbottleservice whatbottleservice;
 
+
+    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
+    public ResponseEntity<?> getPickerOrder(HttpServletRequest request)
+            throws Exception {
+
+        return new ResponseEntity<String>("healthy", HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = {"/getJwtToken"}, method = RequestMethod.GET)
+    public ResponseEntity<?> getJwtToken(HttpServletRequest request)
+            throws Exception {
+        ApiKeyAuth apiKeyAuth = whatbottleservice.generateToken();
+        return new ResponseEntity<ApiKeyAuth>(apiKeyAuth, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = {"/postAMessage"}, method = RequestMethod.POST)
+    public ResponseEntity<?> postAMessage(HttpServletRequest request, @RequestParam String userId, @NonNull @RequestBody MessageRequest messageRequest)
+            throws Exception {
+        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId);
+        return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = {"/floodATopic"}, method = RequestMethod.GET)
+    public ResponseEntity<?> floodTopic(HttpServletRequest request)
+            throws Exception {
+        return new ResponseEntity<String>("", HttpStatus.OK);
+    }
+
+//    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
+//    public ResponseEntity<?> readAMessage(HttpServletRequest request)
+//            throws Exception {
+//
+//        return new ResponseEntity<String>("", HttpStatus.OK);
+//    }
 }
+
