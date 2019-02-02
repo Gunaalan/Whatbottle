@@ -1,7 +1,11 @@
+com/whatbottle/util/WhatbottleHelper.class
 com/whatbottle/config/MyHealthIndicator.class
 com/whatbottle/controller/WhatbottleRestController.class
+com/whatbottle/data/Requests/MessageRequest.class
 com/whatbottle/util/WhatbottleUtils.class
 com/whatbottle/exception/WhatbottleException.class
 com/whatbottle/StartApplication.class
+com/whatbottle/service/Whatbottleservice.class
 com/whatbottle/data/Order.class
+com/whatbottle/service/Impl/WhatbottleserviceImpl.class
 com/whatbottle/util/Constants.class
