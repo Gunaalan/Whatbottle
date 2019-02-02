@@ -48,12 +48,12 @@ public class WhatbottleRestController {
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
 
-//    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
-//    public ResponseEntity<?> readAMessage(HttpServletRequest request, @RequestBody WebhookRequest webhookRequest)
-//            throws Exception {
-//        log.info(webhookRequest.toString());
-//        //whatbottleservice.readAMessage(webhookRequest.getMessages());
-//        return new ResponseEntity<String>("Done", HttpStatus.OK);
-//    }
+    @RequestMapping(value = {"/webhook"}, method = RequestMethod.POST)
+    public ResponseEntity<?> readAMessage(HttpServletRequest request, @RequestBody WebhookRequest webhookRequest)
+            throws Exception {
+        log.info(webhookRequest.toString());
+        //whatbottleservice.readAMessage(webhookRequest.getMessages());
+        return new ResponseEntity<String>("Done", HttpStatus.OK);
+    }
 }
 
