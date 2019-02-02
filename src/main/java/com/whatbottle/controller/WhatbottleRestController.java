@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 /**
  * Created by gunaass
@@ -37,7 +38,7 @@ public class WhatbottleRestController {
     @RequestMapping(value = {"/postAMessage"}, method = RequestMethod.POST)
     public ResponseEntity<?> postAMessage(HttpServletRequest request, @RequestParam String userId, @NonNull @RequestBody MessageRequest messageRequest)
             throws Exception {
-        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId);
+        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId, false);
         return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
     }
 
@@ -53,7 +54,10 @@ public class WhatbottleRestController {
             throws Exception {
         log.info(webhookRequest.toString());
         //whatbottleservice.readAMessage(webhookRequest.getMessages());
-        return new ResponseEntity<String>("Done", HttpStatus.OK);
+        if(Objects.nonNull(webhookRequest.getMessages()) && !webhookRequest.getMessages().get(0).getAuthorId().equalsIgnoreCase("00ubo5auzzt5vbsl90h7"))
+            return new ResponseEntity<String>(String.valueOf(whatbottleservice.readAMessage(webhookRequest.getMessages())), HttpStatus.OK);
+        else
+            return new ResponseEntity<String>("Ping", HttpStatus.OK);
     }
 }
 
