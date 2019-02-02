@@ -9,6 +9,7 @@ import io.smooch.client.model.Enums;
 import io.smooch.client.model.Message;
 import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,9 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         return whatbottleHelper.postAMessage(messagePost, userId);
     }
 
-    public MessageResponse readAMessage(List<Message> messages) throws Exception{
-        
+    @Override
+    public MessageResponse readAMessage(List<Message> messages) throws Exception {
+        return null;
     }
 
 

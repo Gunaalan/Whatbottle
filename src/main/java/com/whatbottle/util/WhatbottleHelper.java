@@ -23,8 +23,8 @@ import static io.jsonwebtoken.JwsHeader.KEY_ID;
 @Component
 public class WhatbottleHelper {
 
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+    private static ApiClient defaultApiClient = Configuration.getDefaultApiClient();
+    private static ApiKeyAuth jwt = (ApiKeyAuth) defaultApiClient.getAuthentication("jwt");
 
     @Value("${appId}")
     private String APP_ID;
