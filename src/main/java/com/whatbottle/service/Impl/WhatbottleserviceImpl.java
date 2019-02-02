@@ -1,6 +1,5 @@
 package com.whatbottle.service.Impl;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
 import com.whatbottle.data.Questions;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.service.Whatbottleservice;
@@ -11,14 +10,12 @@ import io.smooch.client.model.Enums;
 import io.smooch.client.model.Message;
 import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
-import lombok.Builder;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -38,8 +35,8 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
 
     @Override
-    public MessageResponse postAMessage(MessageRequest messageRequest, String userId, boolean isChatMessage) throws Exception {
-        if(chatEnabled && !isChatMessage){
+    public MessageResponse postAMessage(MessageRequest messageRequest, String userId) throws Exception {
+        if(!chatEnabled){
             pushMessageToMongo(messageRequest, userId);
             return new MessageResponse();   //need to change the return type of the function to string
         }
@@ -63,7 +60,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
 
     private void greetUser(String name,String userId) throws Exception {
-        postAMessage(new MessageRequest("Hello " +name),userId,true);
+        postAMessage(new MessageRequest(String.format(Constants.greetHello,name)),userId);
     }
 
     private MessageResponse processIncomingMessage(Message message ,String userId) throws Exception {
@@ -72,53 +69,70 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
             case MENU:
                 processMenu(text,userId);
                 break;
-            case SATISFIED:
-                processSatiesfied(text,userId);
-                break;
-            case POST_QUESTION:
-                processPostQuestion(text,userId);
-                break;
             case QUESTION:
                 fetchAnswer(text,userId);
                 break;
+            case SATISFIED:
+                processSatiesfied(text,userId);
+                break;
+            case UNSATISFIED:
+                processUnsatisfied(text,userId);
+                break;
+            case REITERATE:
+                processReiterate(text,userId);
         }
         return new MessageResponse();
     }
 
     private void processSatiesfied(String response,String userId) throws Exception {
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("Y"))
-            terminateConversation(userId);
-        else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n")){
+            reiterteMenu(userId);
+        else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
             askToPost(userId);
-        }
         else
             postInvalid(userId);
     }
 
-    private void processPostQuestion(String response,String userId) throws Exception{
+    private void reiterteMenu(String userId) throws Exception {
+        postAMessage(new MessageRequest(Constants.iterateQuestion),userId);
+        currentQuestion = Questions.REITERATE;
+    }
+
+    private void processReiterate(String response,String userId) throws Exception {
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("Y"))
-            postAMessage(new MessageRequest("Message Posted"),userId,true);
-        else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n")){
+            postMenu(userId);
+        else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
             terminateConversation(userId);
+        else
+            postInvalid(userId);
+    }
+
+    private void processUnsatisfied(String response, String userId) throws Exception{
+        if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("Y")) {
+            postAMessage(new MessageRequest(Constants.postSuccessfulMessage), userId);
+            reiterteMenu(userId);
         }
+        else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
+            reiterteMenu(userId);
         else
             postInvalid(userId);
     }
 
     private void askToPost(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.questionPost),userId,true);
-        currentQuestion = Questions.POST_QUESTION;
+        postAMessage(new MessageRequest(Constants.answerUnsatisfiedQuestion),userId);
+        currentQuestion = Questions.UNSATISFIED;
     }
 
     private void terminateConversation(String userId) throws Exception {
-        postAMessage(new MessageRequest("Glad to Help"),userId,true);
+        postAMessage(new MessageRequest(Constants.helpMessage),userId);
         chatEnabled = false;
         processMongoMessages();
     }
 
     private void postInvalid(String userId) throws Exception
     {
-        postAMessage(new MessageRequest("Oops! Looks like I didn't understand what you want me to do!"),userId,true);
+        postAMessage(new MessageRequest(Constants.invalidMessage),userId);
+        reiterteMenu(userId);
     }
 
     private void processMenu(String response , String userId) throws Exception {
@@ -143,7 +157,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private MessageResponse postMenu(String userId) throws Exception {
         MessageRequest messageRequest = new MessageRequest(Constants.menu);
-        MessageResponse messageResponse = postAMessage(messageRequest,userId,true);
+        MessageResponse messageResponse = postAMessage(messageRequest,userId);
         currentQuestion=Questions.MENU;
         return messageResponse;
     }
@@ -151,8 +165,16 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     //Hack
     private void fetchAnswer(String question,String userId) throws Exception {
         this.question=question;
-        currentQuestion = Questions.SATISFIED;
-        postAMessage(new MessageRequest("Dummy Answer\n"+Constants.questionAnswerSatisfied),userId,true);
+        if(Objects.isNull(Constants.questions.get(question.toUpperCase()))){
+            askToPost(userId);
+            currentQuestion = Questions.UNSATISFIED;
+        }
+        else
+        {
+            currentQuestion = Questions.SATISFIED;
+            postAMessage(new MessageRequest(Constants.questions.get(question.toUpperCase())),userId);
+            postAMessage(new MessageRequest(Constants.answerSatisfiedQuestion),userId);
+        }
     }
 
     private void pushMessageToMongo(MessageRequest messageRequest, String userId){
@@ -164,7 +186,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
 
     private void askQuestion(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.questionMessage),userId,true);
+        postAMessage(new MessageRequest(Constants.questionMessageQuestion),userId);
         currentQuestion = Questions.QUESTION;
     }
 
