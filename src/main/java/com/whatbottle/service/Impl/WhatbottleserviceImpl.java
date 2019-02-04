@@ -98,7 +98,8 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         String userId = messages.get(0).getAuthorId();
         String name = messages.get(0).getName();
         if (!chatEnabled) {
-            if (messages.get(0).getText().equalsIgnoreCase(Constants.initiateConvo)) {
+            if (Constants.greets.contains(messages.get(0).getText().toUpperCase())) {
+                currentQuestion = Questions.START;
                 chatEnabled = true;
                 greetUser(name, userId);
                 return postMenu(userId);
@@ -117,7 +118,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private MessageResponse processIncomingMessage(Message message, String userId) throws Exception {
         String text = message.getText();
+        if (Constants.greets.contains(message.getText().toUpperCase())) {
+            currentQuestion = Questions.START;
+        }
         switch (currentQuestion) {
+            case START:
+                greetUser(message.getName(), userId);
+                postMenu(userId);
+                break;
             case MENU:
                 processMenu(text, userId);
                 break;
@@ -125,7 +133,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 fetchAnswer(text,userId);
                 break;
             case SATISFIED:
-                processSatiesfied(text, userId);
+                processSatisfied(text, userId);
                 break;
             case UNSATISFIED:
                 processUnsatisfied(text,userId);
@@ -136,6 +144,9 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
             case MUTE:
                 processTopicMute(text,userId);
                 break;
+            case UNMUTE:
+                processTopicUnMute(text,userId);
+                break;
 
         }
         return new MessageResponse();
@@ -145,7 +156,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         System.out.println("to be done");
     }
 
-    private void processSatiesfied(String response,String userId) throws Exception {
+    private void processSatisfied(String response, String userId) throws Exception {
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"))
             reiterteMenu(userId);
         else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
@@ -217,6 +228,10 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 muteTopic(userId);
                 break;
             case "5":
+                unMuteTopic(userId);
+                break;
+            case "6":
+                terminateConversation(userId);
                 break;
             default:
                 postInvalid(userId);
@@ -239,7 +254,13 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private void processTopicMute(String text, String userId) throws Exception {
         muteTopic(topicMuteStatusRepository.findOne(text),userId);
-        postWhatBottleMessage(new MessageRequest(fetchAllTopicWithStatuses()),userId);
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.updatedTopicMute,fetchAllTopicWithStatuses())),userId);
+        reiterteMenu(userId);
+    }
+
+    private void processTopicUnMute(String text, String userId) throws Exception {
+        unMuteTopic(topicMuteStatusRepository.findOne(text),userId);
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.updatedTopicMute,fetchAllTopicWithStatuses())),userId);
         reiterteMenu(userId);
     }
 
@@ -248,8 +269,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         postWhatBottleMessage(new MessageRequest(String.format(Constants.mute,fetchAllTopicWithStatuses())),userId);
     }
 
+    private void unMuteTopic(String userId) throws Exception {
+        currentQuestion = Questions.UNMUTE;
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.unMute,fetchAllTopicWithStatuses())),userId);
+
+    }
+
     private void printInvalidTopicMessage(String userId) throws Exception {
-        postWhatBottleMessage(new MessageRequest(Constants.incalidTopicId),userId);
+        postWhatBottleMessage(new MessageRequest(Constants.invalidTopicId),userId);
     }
 
     private TopicMuteStatus muteTopic(TopicMuteStatus topicMuteStatus, String userId) throws Exception {
@@ -258,6 +285,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         }
         catch (NullPointerException e){
             printInvalidTopicMessage(userId);
+            return topicMuteStatus;
         }
         return topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatus.getTopicId(),false);
     }
@@ -268,10 +296,12 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         }
         catch (NullPointerException e){
             printInvalidTopicMessage(userId);
+            return topicMuteStatus;
+
         }
         if(!topicMuteStatusRepository.findOne(topicMuteStatus.getTopicId()).getMuteStatus()) { //if topic is false
             try{
-                topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatusRepositoryCustom.findActiveTopic().getTopicId(),true);
+                topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatusRepositoryCustom.findActiveTopic().getTopicId(),false);
             }
             catch (NullPointerException e){
                 log.info("No topic is unmuted");

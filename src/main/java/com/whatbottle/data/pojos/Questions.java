@@ -1,9 +1,10 @@
 package com.whatbottle.data.pojos;
 
 import com.whatbottle.util.Constants;
+import org.apache.commons.lang3.StringUtils;
 
 public enum Questions {
-    INITIATE(Constants.initiateConvo),
+    INITIATE(StringUtils.join(Constants.greets,",")),
     UNSATISFIED(Constants.answerUnsatisfiedQuestion),
     SATISFIED(Constants.answerSatisfiedQuestion),
     MENU(String.join(",",Constants.menu)),
@@ -11,7 +12,7 @@ public enum Questions {
     QUESTION(Constants.questionMessageQuestion),
     START(Constants.start),
     MUTE(Constants.mute),
-    UMUTE(Constants.unMute);
+    UNMUTE(Constants.unMute);
 
     Questions(String question) {
         this.question = question;
