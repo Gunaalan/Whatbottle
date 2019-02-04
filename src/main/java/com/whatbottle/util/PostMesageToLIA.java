@@ -52,8 +52,8 @@ public class PostMesageToLIA {
                 .body(messageRequest.getMessage().toString())
                 .build();
         postMessage(liaapiConnection, board, message);
-        MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
-        messageReplyV2API.postMessageReply()
+//        MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
+//        messageReplyV2API.postMessageReply();
     }
 
     private Board createBoard(BoardV2 boardV2) {

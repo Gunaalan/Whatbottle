@@ -1,6 +1,7 @@
 package com.whatbottle.service;
 
 import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.models.TopicMuteStatus;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.Message;
 import io.smooch.client.model.MessageResponse;
@@ -15,6 +16,8 @@ public interface Whatbottleservice {
     public MessageResponse postWhatBottleMessage(MessageRequest messageRequest, String userId) throws Exception;
 
     public MessageResponse readAMessage(List<Message> messages)  throws Exception;
+
+    public TopicMuteStatus insertTopicMuteStatus(TopicMuteStatus topicMuteStatus);
     }
 
 

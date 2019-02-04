@@ -9,7 +9,9 @@ public enum Questions {
     MENU(String.join(",",Constants.menu)),
     REITERATE(Constants.iterateQuestion),
     QUESTION(Constants.questionMessageQuestion),
-    START(Constants.start);
+    START(Constants.start),
+    MUTE(Constants.mute),
+    UMUTE(Constants.unMute);
 
     Questions(String question) {
         this.question = question;
