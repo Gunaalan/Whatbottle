@@ -1,7 +1,9 @@
 package com.whatbottle.service.Impl;
 
 
+import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.data.models.ReplyMessageRequest;
 import com.whatbottle.data.pojos.Questions;
 import com.whatbottle.repository.ReplyMessageRequestRepository;
@@ -260,12 +262,15 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         currentQuestion = Questions.QUESTION;
     }
 
-
-
     @Override
-    public MessageResponse replyToTopic() throws Exception {
-        postAMessageToLia.replyToTopic(null,null);
-        return null;
+    public MessageResponse replyToTopic(WhatsAppMessage whatsAppMessage) throws Exception {
+        MessageV2Response response = postAMessageToLia.replyToTopic(whatsAppMessage);
+        Message message = new Message();
+        message.setText(response.toString());
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage(message);
+        return messageResponse;
     }
+
 
 }

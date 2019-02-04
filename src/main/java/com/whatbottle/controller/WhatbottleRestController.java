@@ -2,6 +2,7 @@ package com.whatbottle.controller;
 
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WebhookRequest;
+import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.service.Whatbottleservice;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.MessageResponse;
@@ -59,10 +60,16 @@ public class WhatbottleRestController {
             return new ResponseEntity<String>("Ping", HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/testReply"}, method = RequestMethod.GET)
-    public ResponseEntity<?> testReply(HttpServletRequest request)throws Exception{
-        whatbottleservice.replyToTopic();
-        return new ResponseEntity<String>("Ping", HttpStatus.OK);
+    @RequestMapping(value = {"/replyMessage"}, method = RequestMethod.POST)
+    public ResponseEntity<?> replyMessage(HttpServletRequest request, @RequestBody WhatsAppMessage message)throws Exception{
+        validateWhatsappMessage(message);
+        MessageResponse messageResponse = whatbottleservice.replyToTopic(message);
+        return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
+    }
+
+    private void validateWhatsappMessage(WhatsAppMessage message) {
+        //TODO
     }
 }
+
 
