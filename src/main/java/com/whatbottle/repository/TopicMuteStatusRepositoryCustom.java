@@ -6,5 +6,7 @@ public interface TopicMuteStatusRepositoryCustom {
 
     public TopicMuteStatus updateMuteStatus(String topicId, boolean muteStatus);
 
-    TopicMuteStatus findActiveTopic();
+    public TopicMuteStatus findActiveTopic();
+
+
 }

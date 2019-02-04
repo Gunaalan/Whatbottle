@@ -19,4 +19,6 @@ public interface ReplyMessageRequestRepository extends MongoRepository<ReplyMess
 
     List<ReplyMessageRequest> findAllOrOrderByCreatedDate();
 
+    void  delete(ReplyMessageRequest replyMessageRequest);
+
 }

@@ -56,11 +56,17 @@ public class PostMesageToLIA {
     private void postAMessageToCommunity(MessageRequest messageRequest) {
         User user = LiaApiConnector.getDefaultUser();
         this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
-
-        BoardV2 boardV2 = getBoardFromCommunity(boardId);
-        if (boardV2 != null) {
-            Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
+        BoardV2 boardV2=null;
+        try {
+             boardV2 = getBoardFromCommunity(boardId);
+            if (boardV2 != null) {
+                Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
+            }
+        }catch (Exception e){
+            boardV2=BoardV2.builder().id(boardId).conversation_style(ConversationStyles.forum.toString()).title(boardTitle).type("forum").build();
+            board= createBoard(boardV2);
         }
+
         Message message = Message.builder()
                 .subject(messageRequest.getTopicName())
                 .body(messageRequest.getMessage().toString())
