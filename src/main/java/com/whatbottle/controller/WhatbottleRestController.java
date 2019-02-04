@@ -2,11 +2,11 @@ package com.whatbottle.controller;
 
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WebhookRequest;
-<<<<<<< HEAD
+
 import com.whatbottle.data.Requests.WhatsAppMessage;
-=======
+
 import com.whatbottle.data.models.TopicMuteStatus;
->>>>>>> master
+
 import com.whatbottle.service.Whatbottleservice;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.MessageResponse;
