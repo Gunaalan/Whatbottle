@@ -113,8 +113,8 @@ public class PostMesageToLIA {
 
     public String replyToTopic(Message message, String boardName){
         User user = LiaApiConnector.getDefaultUser();
-        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, "localhost:8080", -1, "lia");
-        BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard("belalQa");
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, "automationresp1.qa.lithium.com", -1, "automationresp1");
+        BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard("abcd");
         MessageReplyV2API messageReplyV2API = new MessageReplyV2API(liaapiConnection);
         MessageV2Response messageV2Response = messageReplyV2API.postMessageReply(createBoard(boardv2),message,user,null);
         return null;
