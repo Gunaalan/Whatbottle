@@ -1,12 +1,9 @@
 package com.whatbottle.data.models;
 
 
-import com.whatbottle.data.Requests.MessageRequest;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 
@@ -20,6 +17,7 @@ import java.util.Date;
 @Document(collection = "ReplyMessageRequestQueue")
 @Data
 public class ReplyMessageRequest {
+    @Id
     String id;
 
     String message;

@@ -1,11 +1,16 @@
 package com.whatbottle.service.Impl;
 
 
+import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.models.AskAQuestionResponse;
+import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.data.models.ReplyMessageRequest;
+import com.whatbottle.data.models.TopicMuteStatus;
 import com.whatbottle.data.pojos.Questions;
 import com.whatbottle.repository.ReplyMessageRequestRepository;
+import com.whatbottle.repository.TopicMuteStatusRepository;
+import com.whatbottle.repository.TopicMuteStatusRepositoryCustom;
 import com.whatbottle.service.Whatbottleservice;
 import com.whatbottle.util.Constants;
 import com.whatbottle.util.PostMesageToLIA;
@@ -16,6 +21,7 @@ import io.smooch.client.model.Enums;
 import io.smooch.client.model.Message;
 import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,7 +43,13 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     ReplyMessageRequestRepository replyMessageRequestRepository;
 
     @Autowired
+    TopicMuteStatusRepository topicMuteStatusRepository;
+
+    @Autowired
     PostMesageToLIA postAMessageToLia;
+
+    @Autowired
+    TopicMuteStatusRepositoryCustom topicMuteStatusRepositoryCustom;
 
     private boolean chatEnabled = false;
     private Questions currentQuestion = Questions.START;
@@ -87,11 +99,12 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
 
     @Override
+    @Synchronized
     public MessageResponse readAMessage(List<Message> messages) throws Exception {
         String userId = messages.get(0).getAuthorId();
         String name = messages.get(0).getName();
         if (!chatEnabled) {
-            if (messages.get(0).getText().equalsIgnoreCase(Constants.initiateConvo)) {
+            if (Constants.greets.contains(messages.get(0).getText().toUpperCase())) {
                 currentQuestion = Questions.START;
                 chatEnabled = true;
                 greetUser(name, userId);
@@ -105,13 +118,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         }
     }
 
+
     private void greetUser(String name,String userId) throws Exception {
         postWhatBottleMessage(new MessageRequest(String.format(Constants.greetHello,name)),userId);
     }
 
     private MessageResponse processIncomingMessage(Message message, String userId) throws Exception {
         String text = message.getText();
-        if (message.getText().equalsIgnoreCase(Constants.initiateConvo)) {
+        if (Constants.greets.contains(message.getText().toUpperCase())) {
             currentQuestion = Questions.START;
         }
         switch (currentQuestion) {
@@ -126,13 +140,20 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 fetchAnswer(text,userId);
                 break;
             case SATISFIED:
-                processSatiesfied(text, userId);
+                processSatisfied(text, userId);
                 break;
             case UNSATISFIED:
                 processUnsatisfied(text,userId);
                 break;
             case REITERATE:
                 processReiterate(text,userId);
+                break;
+            case MUTE:
+                processTopicMute(text,userId);
+                break;
+            case UNMUTE:
+                processTopicUnMute(text,userId);
+                break;
 
         }
         return new MessageResponse();
@@ -142,7 +163,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         System.out.println("to be done");
     }
 
-    private void processSatiesfied(String response,String userId) throws Exception {
+    private void processSatisfied(String response, String userId) throws Exception {
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"))
             reiterteMenu(userId);
         else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
@@ -207,9 +228,102 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
             case "2":
                 showTendingTopics(userId);
                 break;
+            case "3":
+                postUnansweredQuestion(userId);
+                break;
+            case "4":
+                muteTopic(userId);
+                break;
+            case "5":
+                unMuteTopic(userId);
+                break;
+            case "6":
+                terminateConversation(userId);
+                break;
             default:
                 postInvalid(userId);
         }
+    }
+
+    private String fetchAllTopicWithStatuses(){
+        String result="";
+        String value;
+        List<TopicMuteStatus> topicMuteStatuses = topicMuteStatusRepository.findAll();
+        for(TopicMuteStatus topicMuteStatus: topicMuteStatuses){
+            if(topicMuteStatus.getMuteStatus())
+                value = Constants.greenHeart;
+            else
+                value = Constants.redHeart;
+            result = result.concat(topicMuteStatus.getTopicId()+" : "+value+"\n");
+        }
+        return result;
+    }
+
+    private void processTopicMute(String text, String userId) throws Exception {
+        muteTopic(topicMuteStatusRepository.findOne(text),userId);
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.updatedTopicMute,fetchAllTopicWithStatuses())),userId);
+        reiterteMenu(userId);
+    }
+
+    private void processTopicUnMute(String text, String userId) throws Exception {
+        unMuteTopic(topicMuteStatusRepository.findOne(text),userId);
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.updatedTopicMute,fetchAllTopicWithStatuses())),userId);
+        reiterteMenu(userId);
+    }
+
+    private void muteTopic(String userId) throws Exception {
+        currentQuestion = Questions.MUTE;
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.mute,fetchAllTopicWithStatuses())),userId);
+    }
+
+    private void unMuteTopic(String userId) throws Exception {
+        currentQuestion = Questions.UNMUTE;
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.unMute,fetchAllTopicWithStatuses())),userId);
+
+    }
+
+    private void printInvalidTopicMessage(String userId) throws Exception {
+        postWhatBottleMessage(new MessageRequest(Constants.invalidTopicId),userId);
+    }
+
+    private TopicMuteStatus muteTopic(TopicMuteStatus topicMuteStatus, String userId) throws Exception {
+        try{
+            topicMuteStatusRepository.findOne(topicMuteStatus.getTopicId()).getMuteStatus();
+        }
+        catch (NullPointerException e){
+            printInvalidTopicMessage(userId);
+            return topicMuteStatus;
+        }
+        return topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatus.getTopicId(),false);
+    }
+
+    private TopicMuteStatus unMuteTopic(TopicMuteStatus topicMuteStatus, String userId) throws Exception {
+        try{
+            topicMuteStatusRepository.findOne(topicMuteStatus.getTopicId()).getMuteStatus();
+        }
+        catch (NullPointerException e){
+            printInvalidTopicMessage(userId);
+            return topicMuteStatus;
+
+        }
+        if(!topicMuteStatusRepository.findOne(topicMuteStatus.getTopicId()).getMuteStatus()) { //if topic is false
+            try{
+                topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatusRepositoryCustom.findActiveTopic().getTopicId(),false);
+            }
+            catch (NullPointerException e){
+                log.info("No topic is unmuted");
+            }
+        }
+        return topicMuteStatusRepositoryCustom.updateMuteStatus(topicMuteStatus.getTopicId(),true);
+    }
+
+    public TopicMuteStatus insertTopicMuteStatus(TopicMuteStatus topicMuteStatus){
+        return topicMuteStatusRepository.save(topicMuteStatus);
+    }
+
+    private void postUnansweredQuestion(String userId) throws Exception {
+        postWhatBottleMessage(new MessageRequest(Constants.showUnansweredMessages),userId);
+        reiterteMenu(userId);
     }
 
     private MessagePost constructReplyMessage(MessageRequest messageRequest) throws Exception {
@@ -281,5 +395,15 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         postWhatBottleMessage(new MessageRequest(answer),userId);
 
     }
+    @Override
+    public MessageResponse replyToTopic(WhatsAppMessage whatsAppMessage) throws Exception {
+        MessageV2Response response = postAMessageToLia.replyToTopic(whatsAppMessage);
+        Message message = new Message();
+        message.setText(response.toString());
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage(message);
+        return messageResponse;
+    }
+
 
 }
