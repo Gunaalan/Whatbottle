@@ -1,29 +1,25 @@
 package com.whatbottle.util;
 
-import com.google.gson.Gson;
-import com.linkedin.urls.Url;
+
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.models.*;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * Created by guna on 30/06/18.
  */
 @Slf4j
 public class WhatbottleUtils {
+
+
 
     public static ReplyMessageRequest MessageRequestToReplyMessageRequestConvertor(MessageRequest messageRequest) {
         ReplyMessageRequest replyMessageRequest = new ReplyMessageRequest();
@@ -72,12 +68,6 @@ public class WhatbottleUtils {
         return triggerResponse;
     }
 
-    public static String postHttpRequest(String baseURI,String resource,String body) {
-        RequestSpecification requestSpecification = RestAssured.given()
-                .baseUri(baseURI)
-                .body(body);
-        return requestSpecification.post(resource).getBody().asString();
-    }
 
     public static HttpPost getPostRequest(String url) {
 

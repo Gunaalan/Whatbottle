@@ -1,6 +1,8 @@
 package com.whatbottle.service.Impl;
 
 
+import com.google.gson.Gson;
+import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.models.AskAQuestionResponse;
@@ -397,13 +399,12 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
     @Override
     public MessageResponse replyToTopic(WhatsAppMessage whatsAppMessage) throws Exception {
-        MessageV2Response response = postAMessageToLia.replyToTopic(whatsAppMessage);
+        BoardV1Response m = postAMessageToLia.replyToTopic(whatsAppMessage);
         Message message = new Message();
-        message.setText(response.toString());
+        message.setText(new Gson().toJson(m));
         MessageResponse messageResponse = new MessageResponse();
         messageResponse.setMessage(message);
         return messageResponse;
     }
-
 
 }
