@@ -2,9 +2,9 @@ package com.whatbottle.service.Impl;
 
 
 import com.whatbottle.data.Requests.MessageRequest;
-import com.whatbottle.data.models.TopicMessageRequest;
+import com.whatbottle.data.models.ReplyMessageRequest;
 import com.whatbottle.data.pojos.Questions;
-import com.whatbottle.repository.TopicMessageRequestRepository;
+import com.whatbottle.repository.ReplyMessageRequestRepository;
 import com.whatbottle.service.Whatbottleservice;
 import com.whatbottle.util.Constants;
 import com.whatbottle.util.PostMesageToLIA;
@@ -30,13 +30,13 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     WhatbottleHelper whatbottleHelper;
 
     @Autowired
-    TopicMessageRequestRepository topicMessageRequestRepository;
+    ReplyMessageRequestRepository replyMessageRequestRepository;
 
     @Autowired
     PostMesageToLIA postAMessageToLia;
 
     private boolean chatEnabled = false;
-    private Questions currentQuestion;
+    private Questions currentQuestion = Questions.START;
 
 
     @Override
@@ -45,14 +45,24 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
 
     @Override
-
-    public MessageResponse postAMessage(MessageRequest messageRequest, String userId) throws Exception {
-        if(!chatEnabled){
-            pushMessageToMongo(messageRequest, userId);
+    public MessageResponse postRepliesMessage(MessageRequest messageRequest, String userId) throws Exception {
+        if(chatEnabled){
+            pushMessageToMongo(WhatbottleUtils.MessageRequestToReplyMessageRequestConvertor(messageRequest), userId);
             return successfullyQueuedMessageResponse();
         } else {
-            MessagePost messagePost = constructTextMessage(messageRequest.getMessage());
+            MessagePost messagePost = constructReplyMessage(messageRequest);
             return whatbottleHelper.postAMessage(messagePost, userId);
+        }
+    }
+
+    @Override
+    public MessageResponse postWhatBottleMessage(MessageRequest messageRequest, String userId) throws Exception {
+        if(chatEnabled){
+            MessagePost messagePost = constructWhatbottleMessage(messageRequest);
+            return whatbottleHelper.postAMessage(messagePost, userId);
+        }
+        else {
+            throw new Exception("whatbottle-bot not enabled");
         }
     }
 
@@ -64,20 +74,34 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         return messageResponse;
     }
 
+    private MessageResponse successfullyRepliedMessageResponse() {
+        Message message = new Message();
+        message.setText("successfully replied in community.");
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage(message);
+        return messageResponse;
+    }
+
     @Override
     public MessageResponse readAMessage(List<Message> messages) throws Exception {
         String userId = messages.get(0).getAuthorId();
         String name = messages.get(0).getName();
-        if (messages.get(0).getText().equalsIgnoreCase(Constants.initiateConvo) && !chatEnabled) {
-            chatEnabled = true;
-            greetUser(name, userId);
-            return postMenu(userId);
-        } else
+        if (!chatEnabled) {
+            if (messages.get(0).getText().equalsIgnoreCase(Constants.initiateConvo)) {
+                chatEnabled = true;
+                greetUser(name, userId);
+                return postMenu(userId);
+            } else {
+                postReplyToCommunity(messages.get(0).getText());
+                return successfullyRepliedMessageResponse();
+            }
+        } else {
             return processIncomingMessage(messages.get(0), userId);
+        }
     }
 
     private void greetUser(String name,String userId) throws Exception {
-        postAMessage(new MessageRequest(String.format(Constants.greetHello,name)),userId);
+        postWhatBottleMessage(new MessageRequest(String.format(Constants.greetHello,name)),userId);
     }
 
     private MessageResponse processIncomingMessage(Message message, String userId) throws Exception {
@@ -97,22 +121,34 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 break;
             case REITERATE:
                 processReiterate(text,userId);
+            default:
+                enterCorrectInitialization(userId);
+
         }
         return new MessageResponse();
+    }
+
+    private void postReplyToCommunity(String message) {
+        System.out.println("to be done");
     }
 
     private void processSatiesfied(String response,String userId) throws Exception {
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"))
             reiterteMenu(userId);
         else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
-            askToPost(userId);
+            askToPostInCommunity(userId);
         else
             postInvalid(userId);
     }
 
     private void  reiterteMenu(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.iterateQuestion),userId);
+        postWhatBottleMessage(new MessageRequest(Constants.iterateQuestion),userId);
         currentQuestion = Questions.REITERATE;
+    }
+
+    private void  enterCorrectInitialization(String userId) throws Exception {
+        postWhatBottleMessage(new MessageRequest(Constants.start),userId);
+        currentQuestion = Questions.START;
     }
 
     private void processReiterate(String response,String userId) throws Exception {
@@ -126,8 +162,8 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private void   processUnsatisfied(String response, String userId) throws Exception{
         if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("Y")) {
-            //post to community
-            postAMessage(new MessageRequest(Constants.postSuccessfulMessage), userId);
+            postAMessageToLia.postToCommunityWithNewTopic(response);
+            postWhatBottleMessage(new MessageRequest(Constants.postSuccessfulMessage), userId);
             reiterteMenu(userId);
         }
         else if(response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n"))
@@ -136,20 +172,20 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
             postInvalid(userId);
     }
 
-    private void askToPost(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.answerUnsatisfiedQuestion),userId);
+    private void askToPostInCommunity(String userId) throws Exception {
+        postWhatBottleMessage(new MessageRequest(Constants.answerUnsatisfiedQuestion),userId);
         currentQuestion = Questions.UNSATISFIED;
     }
 
     private void terminateConversation(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.helpMessage),userId);
+        postWhatBottleMessage(new MessageRequest(Constants.helpMessage),userId);
         chatEnabled = false;
         processMongoMessages();
     }
 
     private void postInvalid(String userId) throws Exception
     {
-        postAMessage(new MessageRequest(Constants.invalidMessage),userId);
+        postWhatBottleMessage(new MessageRequest(Constants.invalidMessage),userId);
         reiterteMenu(userId);
     }
 
@@ -159,54 +195,67 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 askQuestion(userId);
                 break;
             case "2":
+                showTendingTopics(userId);
                 break;
             default:
                 postInvalid(userId);
         }
     }
 
-    private MessagePost constructTextMessage(String message) throws Exception {
+    private MessagePost constructReplyMessage(MessageRequest messageRequest) throws Exception {
         MessagePost messagePost = new MessagePost();
         messagePost.setRole("appMaker");
         messagePost.setType(Enums.MessageTypeEnum.TEXT.toString());
-        messagePost.setText(message);
+        messagePost.setText("*" + messageRequest.getTopicName() + "*\n" + "_" + messageRequest.getUserName() +"_"+ " : " + messageRequest.getMessage());
+        return messagePost;
+    }
+
+    private MessagePost constructWhatbottleMessage(MessageRequest messageRequest) throws Exception {
+        MessagePost messagePost = new MessagePost();
+        messagePost.setRole("appMaker");
+        messagePost.setType(Enums.MessageTypeEnum.TEXT.toString());
+        messagePost.setText(messageRequest.getMessage());
         return messagePost;
     }
 
     private MessageResponse postMenu(String userId) throws Exception {
         MessageRequest messageRequest = new MessageRequest(Constants.menu);
-        MessageResponse messageResponse = postAMessage(messageRequest,userId);
+        MessageResponse messageResponse = postWhatBottleMessage(messageRequest,userId);
         currentQuestion=Questions.MENU;
         return messageResponse;
     }
 
+    private void showTendingTopics(String userId) throws  Exception {
+        postWhatBottleMessage(new MessageRequest(Constants.showTrendingTopics), userId);
+        reiterteMenu(userId);
+    }
     //Hack
     private void fetchAnswer(String question,String userId) throws Exception {
         if(Objects.isNull(Constants.questions.get(question.toUpperCase()))){
-            askToPost(userId);
+            askToPostInCommunity(userId);
             currentQuestion = Questions.UNSATISFIED;
         }
         else
         {
             currentQuestion = Questions.SATISFIED;
-            postAMessage(new MessageRequest(Constants.questions.get(question.toUpperCase())),userId);
-            postAMessage(new MessageRequest(Constants.answerSatisfiedQuestion),userId);
+            postWhatBottleMessage(new MessageRequest(Constants.questions.get(question.toUpperCase())),userId);
+            postWhatBottleMessage(new MessageRequest(Constants.answerSatisfiedQuestion),userId);
         }
     }
 
-    private TopicMessageRequest pushMessageToMongo(MessageRequest messageRequest, String userId) {
-      return  topicMessageRequestRepository.save(WhatbottleUtils.builder(messageRequest));
+    private ReplyMessageRequest pushMessageToMongo(ReplyMessageRequest replyMessageRequest, String userId) {
+      return  replyMessageRequestRepository.save(replyMessageRequest);
     }
 
-    private void processMongoMessages() {
-        List<TopicMessageRequest> topicMessageRequestsAll = topicMessageRequestRepository.findAll();
-        for(TopicMessageRequest topicMessageRequest : topicMessageRequestsAll) {
-            postAMessageToLia.postAMessageToCommunity(topicMessageRequest);
+    private void processMongoMessages() throws  Exception {
+        List<ReplyMessageRequest> replyMessageRequestsAll = replyMessageRequestRepository.findAll();
+        for(ReplyMessageRequest replyMessageRequest : replyMessageRequestsAll) {
+           postRepliesMessage(WhatbottleUtils.ReplyMessageRequestToMessageRequestConvertor(replyMessageRequest), replyMessageRequest.getUserId());
         }
     }
 
     private void askQuestion(String userId) throws Exception {
-        postAMessage(new MessageRequest(Constants.questionMessageQuestion),userId);
+        postWhatBottleMessage(new MessageRequest(Constants.questionMessageQuestion),userId);
         currentQuestion = Questions.QUESTION;
     }
 

@@ -1,47 +1,35 @@
 package com.whatbottle.util;
 
 import com.whatbottle.data.Requests.MessageRequest;
-import com.whatbottle.data.models.TopicMessageRequest;
-import org.springframework.stereotype.Component;
+import com.whatbottle.data.models.ReplyMessageRequest;
+
+import java.util.Date;
 
 /**
  * Created by guna on 30/06/18.
  */
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.MacProvider;
-import io.jsonwebtoken.security.Keys;
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.api.AppUserApi;
-import io.smooch.client.api.ConversationApi;
-import io.smooch.client.api.WebhookApi;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.AppApi;
-import io.smooch.client.model.AppCreate;
-import io.smooch.client.model.AppResponse;
-import io.smooch.client.model.ListWebhooksResponse;
-import io.smooch.client.model.MessagePost;
-import io.smooch.client.model.MessageResponse;
-import io.smooch.client.model.WebhookResponse;
-
-import java.io.File;
-import java.util.*;
-
-import static io.jsonwebtoken.JwsHeader.KEY_ID;
 
 public class WhatbottleUtils {
 
-
-    public static TopicMessageRequest builder(MessageRequest messageRequest ) {
-        TopicMessageRequest topicMessageRequest = new TopicMessageRequest();
-        topicMessageRequest.setMessageRequest(messageRequest);
-        return topicMessageRequest;
+    public static ReplyMessageRequest MessageRequestToReplyMessageRequestConvertor(MessageRequest messageRequest) {
+        ReplyMessageRequest replyMessageRequest = new ReplyMessageRequest();
+        replyMessageRequest.setCreatedDate(new Date());
+        replyMessageRequest.setMessage(messageRequest.getMessage());
+        replyMessageRequest.setTopicName(messageRequest.getTopicName());
+        replyMessageRequest.setUserName(messageRequest.getUserName());
+        replyMessageRequest.setUserId(messageRequest.getUserId());
+        return replyMessageRequest;
     }
 
-    public static void postReplyToCommunity(TopicMessageRequest topicMessageRequest) {
-
+    public static MessageRequest ReplyMessageRequestToMessageRequestConvertor(ReplyMessageRequest replyMessageRequest) {
+        MessageRequest messageRequest = new MessageRequest();
+        messageRequest.setId(replyMessageRequest.getId());
+        messageRequest.setCreatedDate(replyMessageRequest.getCreatedDate());
+        messageRequest.setMessage(replyMessageRequest.getMessage());
+        messageRequest.setTopicName(replyMessageRequest.getTopicName());
+        messageRequest.setUserName(replyMessageRequest.getUserName());
+        messageRequest.setUserId(replyMessageRequest.getUserId());
+        return messageRequest;
     }
 
 }

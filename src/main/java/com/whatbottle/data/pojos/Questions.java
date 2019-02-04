@@ -8,7 +8,8 @@ public enum Questions {
     SATISFIED(Constants.answerSatisfiedQuestion),
     MENU(String.join(",",Constants.menu)),
     REITERATE(Constants.iterateQuestion),
-    QUESTION(Constants.questionMessageQuestion);
+    QUESTION(Constants.questionMessageQuestion),
+    START(Constants.start);
 
     Questions(String question) {
         this.question = question;

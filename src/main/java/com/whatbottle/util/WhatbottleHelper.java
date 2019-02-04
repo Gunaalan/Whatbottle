@@ -83,7 +83,7 @@ public class WhatbottleHelper {
         ConversationApi apiInstance = new ConversationApi();
         MessageResponse result = new MessageResponse();// MessagePost | Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message))
         try {
-            result = apiInstance.postMessage(APP_ID, userId, messagePostBody);
+            result = apiInstance.postMessage(APP_ID, userId,  messagePostBody);
             log.info("Successfully posted -> response: " + result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationApi #postMessage");

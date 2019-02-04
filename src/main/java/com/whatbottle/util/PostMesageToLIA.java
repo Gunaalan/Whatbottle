@@ -9,17 +9,15 @@ import com.lithium.mineraloil.api.lia.api.v1.CategoryV1API;
 import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v1.models.CategoryV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
+import com.lithium.mineraloil.api.lia.api.v2.MessageReplyV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
 import com.lithium.mineraloil.api.rest.RestAPIException;
-import com.whatbottle.data.models.TopicMessageRequest;
+import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.pojos.ConversationStyles;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 @Slf4j
 @Component
@@ -41,26 +39,24 @@ public class PostMesageToLIA {
     @Value("${category}")
     private String liaCategory;
 
-    @PostConstruct
-    private void PostMesageToLIA(LIAAPIConnection connection) {
-        this.liaapiConnection = connection;
-    }
 
     /*
      * Sample on how to use, need to remove later
      * */
-    public void postAMessageToCommunity(TopicMessageRequest topicMessageRequest) {
+    private void postAMessageToCommunity(MessageRequest messageRequest) {
         User user = LiaApiConnector.getDefaultUser();
         this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
         Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
         Message message = Message.builder()
-                .subject("Topic#" + topicMessageRequest.getTopicId())
-                .body(topicMessageRequest.getMessageRequest().getMessage().toString())
+                .subject(messageRequest.getTopicName())
+                .body(messageRequest.getMessage().toString())
                 .build();
         postMessage(liaapiConnection, board, message);
+        MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
+        messageReplyV2API.postMessageReply()
     }
 
-    public Board createBoard(BoardV2 boardV2) {
+    private Board createBoard(BoardV2 boardV2) {
         Board board = Board.builder()
                 .type(boardV2.getType())
                 .viewHref(boardV2.getViewHref())
@@ -73,7 +69,7 @@ public class PostMesageToLIA {
         return board;
     }
 
-    public Board createLIABoard(LIAAPIConnection liaapiConnection, String boardId, String boardTitle, String liaCategory, ConversationStyles conversationStyles) {
+    private Board createLIABoard(LIAAPIConnection liaapiConnection, String boardId, String boardTitle, String liaCategory, ConversationStyles conversationStyles) {
         Category category = Category.builder().id(liaCategory).build();
         createCategory(liaapiConnection, liaCategory, liaCategory);
         BoardV2 board = BoardV2.builder()
@@ -87,7 +83,7 @@ public class PostMesageToLIA {
         return createBoard(new BoardV2API(liaapiConnection).createBoard(board));
     }
 
-    public CategoryV1Response createCategory(LIAAPIConnection connection, String categoryId, String categoryTitle) {
+    private CategoryV1Response createCategory(LIAAPIConnection connection, String categoryId, String categoryTitle) {
         CategoryV1Response categoryV1Response = null;
         try {
             categoryV1Response = new CategoryV1API(connection).createCategory(categoryId, categoryTitle);
@@ -97,11 +93,19 @@ public class PostMesageToLIA {
         return categoryV1Response;
     }
 
-    public BoardV1Response postMessage(LIAAPIConnection liaapiConnection, Board board, Message message) {
+    private BoardV1Response postMessage(LIAAPIConnection liaapiConnection, Board board, Message message) {
 
         BoardV1Response messagePostResponse = new BoardV1API(liaapiConnection)
                 .postMessage(board, message);
         return messagePostResponse;
+    }
+
+    public MessageRequest postToCommunityWithNewTopic(String message) {
+        MessageRequest messageRequest = new MessageRequest();
+        messageRequest.setTopicName(message);
+        messageRequest.setMessage(message);
+        postAMessageToCommunity(messageRequest);
+        return messageRequest;
     }
 
 

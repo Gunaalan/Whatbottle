@@ -10,7 +10,9 @@ import java.util.List;
 public interface Whatbottleservice {
     public ApiKeyAuth generateToken() throws Exception;
 
-    public MessageResponse postAMessage(MessageRequest messageRequest, String userId) throws Exception;
+    public MessageResponse postRepliesMessage(MessageRequest messageRequest, String userId) throws  Exception;
+
+    public MessageResponse postWhatBottleMessage(MessageRequest messageRequest, String userId) throws Exception;
 
     public MessageResponse readAMessage(List<Message> messages)  throws Exception;
     }

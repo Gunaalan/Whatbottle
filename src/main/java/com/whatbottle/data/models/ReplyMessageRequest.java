@@ -17,20 +17,25 @@ import java.util.Date;
  *
  */
 
-@Document(collection = "TopicMessageRequestQueue")
+@Document(collection = "ReplyMessageRequestQueue")
 @Data
-public class TopicMessageRequest {
-    @Id
+public class ReplyMessageRequest {
     String id;
 
-    @Indexed(background =  true)
-    Date createdDate;
+    String message;
 
-    MessageRequest messageRequest;
+    String userName;
 
-    @Indexed(background =  true)
-    String topicId;
+    String topicName;
 
-    String boardId;
+    String userId;
 
+    Date createdDate = new Date();
+
+    public ReplyMessageRequest(String message) {
+        this.message = message;
+    }
+
+    public ReplyMessageRequest() {
+    }
 }

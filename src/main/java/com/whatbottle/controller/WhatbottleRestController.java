@@ -35,10 +35,10 @@ public class WhatbottleRestController {
         return new ResponseEntity<ApiKeyAuth>(apiKeyAuth, HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/postAMessage"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/postReplyMessage"}, method = RequestMethod.POST)
     public ResponseEntity<?> postAMessage(HttpServletRequest request, @RequestParam String userId, @NonNull @RequestBody MessageRequest messageRequest)
             throws Exception {
-        MessageResponse messageResponse = whatbottleservice.postAMessage(messageRequest, userId);
+        MessageResponse messageResponse = whatbottleservice.postRepliesMessage(messageRequest, userId);
         return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
     }
 
@@ -53,7 +53,6 @@ public class WhatbottleRestController {
     public ResponseEntity<?> readAMessage(HttpServletRequest request, @RequestBody WebhookRequest webhookRequest)
             throws Exception {
         log.info(webhookRequest.toString());
-        //whatbottleservice.readAMessage(webhookRequest.getMessages());
         if(Objects.nonNull(webhookRequest.getMessages()) && !webhookRequest.getMessages().get(0).getAuthorId().equalsIgnoreCase("00ubo5auzzt5vbsl90h7"))
             return new ResponseEntity<String>(String.valueOf(whatbottleservice.readAMessage(webhookRequest.getMessages())), HttpStatus.OK);
         else
