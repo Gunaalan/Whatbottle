@@ -114,6 +114,7 @@ public class PostMesageToLIA {
     public MessageV2Response replyToTopic(WhatsAppMessage whatsAppMessage){
         Message message = convertToMessage(whatsAppMessage);
         User user = LiaApiConnector.getDefaultUser();
+
         this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
         BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard(whatsAppMessage.getBoardName());
         MessageReply messageReplyV2API = new MessageReply(liaapiConnection);
@@ -135,6 +136,5 @@ public class PostMesageToLIA {
                 build();
         return  message;
     }
-
 
 }
