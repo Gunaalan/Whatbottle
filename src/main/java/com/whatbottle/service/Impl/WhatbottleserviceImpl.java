@@ -6,6 +6,7 @@ import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WhatsAppMessage;
+import com.whatbottle.data.models.Answers;
 import com.whatbottle.data.models.AskAQuestionResponse;
 import com.whatbottle.data.models.ReplyMessageRequest;
 import com.whatbottle.data.models.TopicMuteStatus;
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -353,14 +355,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     //Hack
     private void fetchAnswer(String question, String userId) throws Exception {
-        List<AskAQuestionResponse> fetchedAswers = whatbottleHelper.fetchAnswerFromAskAQuestionService(question);
-        if (fetchedAswers.isEmpty()) {
+        Answers fetchedAswers = Constants.questions.get(question.toUpperCase());
+        if (Objects.isNull(fetchedAswers)) {
             askToPostInCommunity(userId);
             currentQuestion = Questions.UNSATISFIED;
         } else {
-            postFetchedAnswersToWhatBottle(fetchedAswers, userId);
+            //postFetchedAnswersToWhatBottle(fetchedAswers, userId);
             currentQuestion = Questions.SATISFIED;
-            postWhatBottleMessage(new MessageRequest(Constants.questions.get(question.toUpperCase())), userId);
+            postWhatBottleMessage(new MessageRequest(fetchedAswers.getAnswer()+"\n\n"+fetchedAswers.getUrl()), userId);
             postWhatBottleMessage(new MessageRequest(Constants.answerSatisfiedQuestion), userId);
         }
     }
