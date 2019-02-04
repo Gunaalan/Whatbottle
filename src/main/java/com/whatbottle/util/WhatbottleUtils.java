@@ -1,27 +1,17 @@
 package com.whatbottle.util;
 
-import com.google.gson.Gson;
-import com.linkedin.urls.Url;
+
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.models.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import org.apache.http.util.EntityUtils;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * Created by guna on 30/06/18.
@@ -53,7 +43,7 @@ public class WhatbottleUtils {
     }
 
     public static TriggerResponse triggerHttpCall(String jsonBody,String url) {
-        TriggerResponse triggerResponse = null;
+        TriggerResponse triggerResponse = new TriggerResponse();
         log.info("-json to post-" + jsonBody);
         log.info("call back url is : " + url);
         HttpPost request = getPostRequest(url);
@@ -63,7 +53,7 @@ public class WhatbottleUtils {
             try (CloseableHttpResponse response = requester.getHttp().send(
                     request)) {
                 int statusCode = response.getStatusLine().getStatusCode();
-                String message = response.getStatusLine().getReasonPhrase();
+                String message = EntityUtils.toString(response.getEntity());
                 triggerResponse.setStatus(statusCode);
                 triggerResponse.setMessage(message);
                 log.info("-responseJson-" + triggerResponse.toString());
@@ -77,6 +67,7 @@ public class WhatbottleUtils {
         }
         return triggerResponse;
     }
+
 
     public static HttpPost getPostRequest(String url) {
 
