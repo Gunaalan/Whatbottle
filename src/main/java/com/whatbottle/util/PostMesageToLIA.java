@@ -3,6 +3,7 @@ package com.whatbottle.util;
 import com.lithium.mineraloil.api.lia.LIAAPIConnection;
 import com.lithium.mineraloil.api.lia.api.models.Board;
 import com.lithium.mineraloil.api.lia.api.models.Message;
+import com.lithium.mineraloil.api.lia.api.models.Parent;
 import com.lithium.mineraloil.api.lia.api.models.User;
 import com.lithium.mineraloil.api.lia.api.v1.BoardV1API;
 import com.lithium.mineraloil.api.lia.api.v1.CategoryV1API;
@@ -11,8 +12,10 @@ import com.lithium.mineraloil.api.lia.api.v1.models.CategoryV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
+import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.lithium.mineraloil.api.rest.RestAPIException;
 import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.data.pojos.ConversationStyles;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +25,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostMesageToLIA {
     private static LIAAPIConnection liaapiConnection;
+    private static BoardV2API boardV2API ;//new BoardV2API(liaapiConnection);
+    private static Board board;
 
     @Value("${communityUrl}")
     private String communityUrl;
@@ -44,7 +49,7 @@ public class PostMesageToLIA {
      * */
     private void postAMessageToCommunity(MessageRequest messageRequest) {
         User user = LiaApiConnector.getDefaultUser();
-        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, 8080, communityName);
         Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
         Message message = Message.builder()
                 .subject(messageRequest.getTopicName())
@@ -105,5 +110,30 @@ public class PostMesageToLIA {
         return messageRequest;
     }
 
+    public MessageV2Response replyToTopic(WhatsAppMessage whatsAppMessage){
+        Message message = convertToMessage(whatsAppMessage);
+        User user = LiaApiConnector.getDefaultUser();
+
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
+        BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard(whatsAppMessage.getBoardName());
+        MessageReply messageReplyV2API = new MessageReply(liaapiConnection);
+        Parent parent  = Parent.builder().id(whatsAppMessage.getId()).build();
+        MessageV2Response messageV2Response =null;
+        try {
+            messageV2Response = messageReplyV2API.postMessageReply(createBoard(boardv2), message, user, parent);
+        }catch (Exception e){
+            log.error("Reply cannot be commpleted: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return messageV2Response;
+    }
+
+    private Message convertToMessage(WhatsAppMessage whatsAppMessage) {
+        Message message = Message.builder().
+                body(whatsAppMessage.getMessageBody()).
+                author(whatsAppMessage.getAuthor()).
+                build();
+        return  message;
+    }
 
 }

@@ -2,7 +2,11 @@ package com.whatbottle.controller;
 
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WebhookRequest;
+
+import com.whatbottle.data.Requests.WhatsAppMessage;
+
 import com.whatbottle.data.models.TopicMuteStatus;
+
 import com.whatbottle.service.Whatbottleservice;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.MessageResponse;
@@ -61,11 +65,23 @@ public class WhatbottleRestController {
             return new ResponseEntity<String>("Ping", HttpStatus.OK);
     }
 
+    @RequestMapping(value = {"/replyMessage"}, method = RequestMethod.POST)
+    public ResponseEntity<?> replyMessage(HttpServletRequest request, @RequestBody WhatsAppMessage message)throws Exception{
+        validateWhatsappMessage(message);
+        MessageResponse messageResponse = whatbottleservice.replyToTopic(message);
+        return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
+    }
+
+    private void validateWhatsappMessage(WhatsAppMessage message) {
+        //TODO
+    }
     @RequestMapping(value = {"/topicMuteStatus"}, method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     protected ResponseEntity<?> updateSubscription(HttpServletRequest request, @RequestBody TopicMuteStatus topicMuteStatus)
         throws Exception{
         whatbottleservice.insertTopicMuteStatus(topicMuteStatus);
         return new ResponseEntity<String>("Updated the subscription details",HttpStatus.OK);
+
     }
 }
+
 
