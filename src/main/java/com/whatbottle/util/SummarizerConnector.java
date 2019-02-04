@@ -7,11 +7,12 @@ import com.whatbottle.data.models.Qas;
 import com.whatbottle.data.models.SummarizerRequest;
 import com.whatbottle.data.models.SummarizerResponse;
 import com.whatbottle.data.models.TriggerResponse;
+import org.springframework.beans.factory.annotation.Value;
 
 public class SummarizerConnector {
 
-    private String url = "http://gpubox2:3002/v0/";
-    private String resource = "extract";
+    @Value("${summarizerUrl}")
+    private String url;
 
     private String fetchSummarizedText(String question,String answer){
         return createSummarizerRequest(question,answer).getCondensed();
@@ -33,7 +34,7 @@ public class SummarizerConnector {
 
         Gson gson = new Gson();
         String request = gson.toJson(summarizerRequest);
-        TriggerResponse triggerResponse = WhatbottleUtils.triggerHttpCall(request,url+resource);
+        TriggerResponse triggerResponse = WhatbottleUtils.triggerHttpCall(request,url);
         return gson.fromJson(triggerResponse.getMessage(),SummarizerResponse.class);
     }
 
