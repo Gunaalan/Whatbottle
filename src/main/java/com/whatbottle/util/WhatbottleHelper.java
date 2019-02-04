@@ -1,5 +1,9 @@
 package com.whatbottle.util;
 
+import com.google.gson.Gson;
+import com.whatbottle.data.models.AskAQuestionRequest;
+import com.whatbottle.data.models.AskAQuestionResponse;
+import com.whatbottle.data.models.TriggerResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -16,6 +20,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.jsonwebtoken.JwsHeader.KEY_ID;
 
@@ -47,6 +54,9 @@ public class WhatbottleHelper {
 
     @Value("${appKeySecret}")
     private String KEY_SECRET_VALUE;
+
+    @Value("${AskAQuestionServiceUrl}")
+    private String ASK_A_QUESTION_SERVICE_URL;
 
     @PostConstruct
     private void initializeToken() {
@@ -92,5 +102,17 @@ public class WhatbottleHelper {
         return result;
     }
 
+
+    public List<AskAQuestionResponse> fetchAnswerFromAskAQuestionService(String question) {
+//        AskAQuestionRequest askAQuestionRequest = new AskAQuestionRequest(question);
+//        Gson gson = new Gson();
+//        String json =  gson.toJson(askAQuestionRequest);
+//        TriggerResponse triggerResponse = WhatbottleUtils.triggerHttpCall(json,ASK_A_QUESTION_SERVICE_URL);
+//        JSONArray jsonArray = new JSONArray(triggerResponse.getMessage());
+//
+//        returnObject = gson.fromJson(jsonArray.get(0).toString(),clazz);
+
+        return new ArrayList<>();
+    }
 
 }

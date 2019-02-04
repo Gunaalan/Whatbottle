@@ -1,15 +1,23 @@
 package com.whatbottle.util;
 
+import com.google.gson.Gson;
+import com.linkedin.urls.Url;
 import com.whatbottle.data.Requests.MessageRequest;
-import com.whatbottle.data.models.ReplyMessageRequest;
+import com.whatbottle.data.models.*;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by guna on 30/06/18.
  */
-
+@Slf4j
 public class WhatbottleUtils {
 
     public static ReplyMessageRequest MessageRequestToReplyMessageRequestConvertor(MessageRequest messageRequest) {
@@ -33,41 +41,44 @@ public class WhatbottleUtils {
         return messageRequest;
     }
 
-//    @Override
-//    public OrderCallbackResponse callbackPartnerForOrder(String partnerId, String jsonBody) {
-//        OrderCallbackResponse orderCallbackResponse = null;
-//        CallbackUrl url = getCallbackUrl(partnerId, CallbackType.ORDER);
-//        if (url == null) {
-//            if (url == null) {
-//                log.info("order Callback url is not defined for partner" + partnerId);
-//                return orderCallbackResponse;
-//            }
-//        }
-//        log.info("json to post" + jsonBody);
-//        log.info("call back url is " + url.getUrl());
-//        HttpPost request = HttpMethodUtil.getPostRequest(url.getUrl());
-//        HttpRequester requester = HttpRequester.getHttpRequester();
-//        try {
-//            request.setEntity(new StringEntity(jsonBody));
-//            try (CloseableHttpResponse response = requester.getHttp().send(
-//                    request)) {
-//                int statusCode = response.getStatusLine().getStatusCode();
-//                String message = response.getStatusLine().getReasonPhrase();
-//                orderCallbackResponse = new OrderCallbackResponse();
-//                orderCallbackResponse.setStatus(statusCode);
-//                orderCallbackResponse.setMessage(message);
-//                log.info("requestJson ABHI" + jsonBody + "responseJson ABHI" + orderCallbackResponse.toString());
-//                log.info("callback for order done, for " + partnerId + " statusCode - " + statusCode + " message - " + message);
-//
-//            } catch (Exception e) {
-//                log.error("unable to callback for order to partner "
-//                        + partnerId);
-//            }
-//        } catch (UnsupportedEncodingException e) {
-//            log.error("Error in parsing order call back response for partner "
-//                    + partnerId + " respnse : " + jsonBody);
-//        }
-//        return orderCallbackResponse;
-//    }
+    public static TriggerResponse triggerHttpCall(String jsonBody,String url) {
+        TriggerResponse triggerResponse = null;
+        log.info("-json to post-" + jsonBody);
+        log.info("call back url is : " + url);
+        HttpPost request = getPostRequest(url);
+        HttpRequester requester = HttpRequester.getHttpRequester();
+        try {
+            request.setEntity(new StringEntity(jsonBody));
+            try (CloseableHttpResponse response = requester.getHttp().send(
+                    request)) {
+                int statusCode = response.getStatusLine().getStatusCode();
+                String message = response.getStatusLine().getReasonPhrase();
+                triggerResponse.setStatus(statusCode);
+                triggerResponse.setMessage(message);
+                log.info("-responseJson-" + triggerResponse.toString());
+                log.info("Http call done : " + " statusCode - " + statusCode + " message - " + message);
+
+            } catch (Exception e) {
+                log.error("unable to do Http call ");
+            }
+        } catch (UnsupportedEncodingException e) {
+            log.error("Error in parsing triggerResponse ");
+        }
+        return triggerResponse;
+    }
+
+    public static HttpPost getPostRequest(String url) {
+
+        HttpPost request = new HttpPost();
+        request.setURI(getUri(url));
+        request.setHeader("Accept", "application/json");
+        request.setHeader("Content-type", "application/json");
+        return request;
+    }
+
+    private static URI getUri(String url) {
+        return URI.create(url);
+    }
+
 
 }

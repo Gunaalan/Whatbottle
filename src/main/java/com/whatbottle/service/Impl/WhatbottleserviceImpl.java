@@ -2,6 +2,7 @@ package com.whatbottle.service.Impl;
 
 
 import com.whatbottle.data.Requests.MessageRequest;
+import com.whatbottle.data.models.AskAQuestionResponse;
 import com.whatbottle.data.models.ReplyMessageRequest;
 import com.whatbottle.data.pojos.Questions;
 import com.whatbottle.repository.ReplyMessageRequestRepository;
@@ -17,8 +18,11 @@ import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -237,12 +241,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
     }
     //Hack
     private void fetchAnswer(String question,String userId) throws Exception {
-        if(Objects.isNull(Constants.questions.get(question.toUpperCase()))){
+        List<AskAQuestionResponse> fetchedAswers = whatbottleHelper.fetchAnswerFromAskAQuestionService(question);
+        if(fetchedAswers.isEmpty()) {
             askToPostInCommunity(userId);
             currentQuestion = Questions.UNSATISFIED;
         }
         else
         {
+            postFetchedAnswersToWhatBottle(fetchedAswers,userId);
             currentQuestion = Questions.SATISFIED;
             postWhatBottleMessage(new MessageRequest(Constants.questions.get(question.toUpperCase())),userId);
             postWhatBottleMessage(new MessageRequest(Constants.answerSatisfiedQuestion),userId);
@@ -265,5 +271,15 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         currentQuestion = Questions.QUESTION;
     }
 
+    private void postFetchedAnswersToWhatBottle(List<AskAQuestionResponse> askAQuestionResponses,String userId) throws Exception {
+        int counter=0;
+        String answer="";
+        for(AskAQuestionResponse askAQuestionResponse : askAQuestionResponses) {
+            answer = answer + Integer.toString(counter++) +"_" + askAQuestionResponse.getMessage()+ "_" + "\n" +
+                    askAQuestionResponse.getUrl() + "\n";
+        }
+        postWhatBottleMessage(new MessageRequest(answer),userId);
+
+    }
 
 }
