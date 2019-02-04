@@ -7,6 +7,7 @@ import com.lithium.mineraloil.api.lia.api.models.Parent;
 import com.lithium.mineraloil.api.lia.api.models.User;
 import com.lithium.mineraloil.api.lia.api.v1.BoardV1API;
 import com.lithium.mineraloil.api.lia.api.v1.CategoryV1API;
+import com.lithium.mineraloil.api.lia.api.v1.endpoints.BoardV1Endpoints;
 import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v1.models.CategoryV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
@@ -18,8 +19,13 @@ import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WhatsAppMessage;
 import com.whatbottle.data.pojos.ConversationStyles;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -112,21 +118,13 @@ public class PostMesageToLIA {
         return messagePostResponse;
     }
 
-    public MessageV2Response replyToTopic(WhatsAppMessage whatsAppMessage) {
+    public BoardV1Response replyToTopic(WhatsAppMessage whatsAppMessage) {
         Message message = convertToMessage(whatsAppMessage);
         User user = LiaApiConnector.getDefaultUser();
         this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
-        MessageReply messageReplyV2API = new MessageReply(liaapiConnection);
-        Parent parent = Parent.builder().id(whatsAppMessage.getId()).build();
-        BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard(whatsAppMessage.getBoardName());
-        MessageV2Response messageV2Response = null;
-        try {
-            messageV2Response = messageReplyV2API.postMessageReply(createBoard(boardv2), message, user, parent);
-        } catch (Exception e) {
-            log.error("Reply cannot be commpleted: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return messageV2Response;
+
+        BoardV1Response boardV1Response = new BoardV1API(liaapiConnection).postReply(whatsAppMessage.getParent_id(),message);
+        return boardV1Response;
     }
 
     private Message convertToMessage(WhatsAppMessage whatsAppMessage) {
