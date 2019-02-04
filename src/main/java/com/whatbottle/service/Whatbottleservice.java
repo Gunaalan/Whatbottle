@@ -15,6 +15,7 @@ public interface Whatbottleservice {
     public MessageResponse postWhatBottleMessage(MessageRequest messageRequest, String userId) throws Exception;
 
     public MessageResponse readAMessage(List<Message> messages)  throws Exception;
+    public MessageResponse replyToTopic()throws Exception;
     }
 
 

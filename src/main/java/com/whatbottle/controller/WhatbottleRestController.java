@@ -58,5 +58,11 @@ public class WhatbottleRestController {
         else
             return new ResponseEntity<String>("Ping", HttpStatus.OK);
     }
+
+    @RequestMapping(value = {"/testReply"}, method = RequestMethod.GET)
+    public ResponseEntity<?> testReply(HttpServletRequest request)throws Exception{
+        whatbottleservice.replyToTopic();
+        return new ResponseEntity<String>("Ping", HttpStatus.OK);
+    }
 }
 

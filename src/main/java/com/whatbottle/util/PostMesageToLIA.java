@@ -12,6 +12,7 @@ import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
 import com.lithium.mineraloil.api.lia.api.v2.MessageReplyV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
+import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;
 import com.lithium.mineraloil.api.rest.RestAPIException;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.pojos.ConversationStyles;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostMesageToLIA {
     private static LIAAPIConnection liaapiConnection;
+    private static BoardV2API boardV2API ;//new BoardV2API(liaapiConnection);
+    private static Board board;
 
     @Value("${communityUrl}")
     private String communityUrl;
@@ -45,15 +48,15 @@ public class PostMesageToLIA {
      * */
     private void postAMessageToCommunity(MessageRequest messageRequest) {
         User user = LiaApiConnector.getDefaultUser();
-        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, -1, communityName);
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, communityUrl, 8080, communityName);
         Board board = createLIABoard(this.liaapiConnection, boardId, boardTitle, liaCategory, ConversationStyles.forum);
         Message message = Message.builder()
                 .subject(messageRequest.getTopicName())
                 .body(messageRequest.getMessage().toString())
                 .build();
         postMessage(liaapiConnection, board, message);
-        MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
-        messageReplyV2API.postMessageReply()
+        //MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
+        //messageReplyV2API.postMessageReply();
     }
 
     private Board createBoard(BoardV2 boardV2) {
@@ -108,5 +111,13 @@ public class PostMesageToLIA {
         return messageRequest;
     }
 
+    public String replyToTopic(Message message, String boardName){
+        User user = LiaApiConnector.getDefaultUser();
+        this.liaapiConnection = LiaApiConnector.getLIAAPIConnectionV1(user, "localhost:8080", -1, "lia");
+        BoardV2 boardv2 = new BoardV2API(liaapiConnection).getBoard("belalQa");
+        MessageReplyV2API messageReplyV2API = new MessageReplyV2API(liaapiConnection);
+        MessageV2Response messageV2Response = messageReplyV2API.postMessageReply(createBoard(boardv2),message,user,null);
+        return null;
+    }
 
 }

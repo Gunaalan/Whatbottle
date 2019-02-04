@@ -100,6 +100,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         }
     }
 
+
     private void greetUser(String name,String userId) throws Exception {
         postWhatBottleMessage(new MessageRequest(String.format(Constants.greetHello,name)),userId);
     }
@@ -259,5 +260,12 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         currentQuestion = Questions.QUESTION;
     }
 
+
+
+    @Override
+    public MessageResponse replyToTopic() throws Exception {
+        postAMessageToLia.replyToTopic(null,null);
+        return null;
+    }
 
 }
