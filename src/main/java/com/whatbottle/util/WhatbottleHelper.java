@@ -3,6 +3,7 @@ package com.whatbottle.util;
 import com.google.gson.Gson;
 import com.whatbottle.data.models.AskAQuestionRequest;
 import com.whatbottle.data.models.AskAQuestionResponse;
+import com.whatbottle.data.models.ResponseModel;
 import com.whatbottle.data.models.TriggerResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,8 +17,15 @@ import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 
@@ -39,6 +47,8 @@ public class WhatbottleHelper {
 
     private static ApiClient defaultApiClient = Configuration.getDefaultApiClient();
     private static ApiKeyAuth jwt = (ApiKeyAuth) defaultApiClient.getAuthentication("jwt");
+    @Autowired
+    RestTemplate restTemplate;
 
     @Value("${appId}")
     private String APP_ID;
