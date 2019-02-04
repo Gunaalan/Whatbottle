@@ -10,5 +10,6 @@ public interface TopicMuteStatusRepository extends MongoRepository<TopicMuteStat
 
     TopicMuteStatus save(TopicMuteStatus replyMessageRequest);
 
+    void delete(TopicMuteStatus topicMuteStatus);
 
 }

@@ -41,10 +41,10 @@ public class WhatbottleRestController {
         return new ResponseEntity<ApiKeyAuth>(apiKeyAuth, HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/postReplyMessage"}, method = RequestMethod.POST)
-    public ResponseEntity<?> postAMessage(HttpServletRequest request, @RequestParam String userId, @NonNull @RequestBody MessageRequest messageRequest)
+    @RequestMapping(value = {"/postReplyMessage"}, method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> postAMessage(HttpServletRequest request, @NonNull @RequestBody MessageRequest messageRequest)
             throws Exception {
-        MessageResponse messageResponse = whatbottleservice.postRepliesMessage(messageRequest, userId);
+        MessageResponse messageResponse = whatbottleservice.postRepliesMessage(messageRequest, messageRequest.getUserId());
         return new ResponseEntity<MessageResponse>(messageResponse, HttpStatus.OK);
     }
 

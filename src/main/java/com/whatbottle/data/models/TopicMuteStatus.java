@@ -9,5 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TopicMuteStatus {
     @Id
     private String topicId;
+
+    private String topicName;
     private Boolean muteStatus;
 }
