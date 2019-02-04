@@ -88,6 +88,7 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
         String name = messages.get(0).getName();
         if (!chatEnabled) {
             if (messages.get(0).getText().equalsIgnoreCase(Constants.initiateConvo)) {
+                currentQuestion = Questions.START;
                 chatEnabled = true;
                 greetUser(name, userId);
                 return postMenu(userId);
@@ -106,7 +107,14 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
 
     private MessageResponse processIncomingMessage(Message message, String userId) throws Exception {
         String text = message.getText();
+        if (message.getText().equalsIgnoreCase(Constants.initiateConvo)) {
+            currentQuestion = Questions.START;
+        }
         switch (currentQuestion) {
+            case START:
+                greetUser(message.getName(), userId);
+                postMenu(userId);
+                break;
             case MENU:
                 processMenu(text, userId);
                 break;
@@ -121,8 +129,6 @@ public class WhatbottleserviceImpl implements Whatbottleservice {
                 break;
             case REITERATE:
                 processReiterate(text,userId);
-            default:
-                enterCorrectInitialization(userId);
 
         }
         return new MessageResponse();

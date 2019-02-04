@@ -25,9 +25,9 @@ public interface Constants {
     String answerSatisfiedQuestion = whatbottle + "Are you Satisfied with the above answer?\n Answer *Y* or *N*";
     String iterateQuestion = whatbottle + "Is there anything else we can help you with?\n Answer *Y* or *N*";
 
-    String greetHello = whatbottle + "Hello %s";
+    String greetHello = whatbottle + "Hello %s!";
 
-    String showTrendingTopics= "1. Iphone X\n2. Samsung Galaxy Note 9 heating issue\n3. pixel 3 photography";
+    String showTrendingTopics= "Trending now: \n 1. _Iphone X black sceen issue_\n2.Samsung Galaxy Note 9 heating issue\n3. pixel 3 photography";
 
     Map<String,String> questions = ImmutableMap.of("WHATS THE XIAOMI MI A2 COST IN BANGALORE?","13,670 INR",
             "WHICH CAMERAS ARE BEST FOR PHOTOGRAPHY?","Iphone Xs ,Pixel 3",

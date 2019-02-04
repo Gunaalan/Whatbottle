@@ -9,7 +9,6 @@ import com.lithium.mineraloil.api.lia.api.v1.CategoryV1API;
 import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v1.models.CategoryV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
-import com.lithium.mineraloil.api.lia.api.v2.MessageReplyV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
 import com.lithium.mineraloil.api.rest.RestAPIException;
@@ -52,8 +51,6 @@ public class PostMesageToLIA {
                 .body(messageRequest.getMessage().toString())
                 .build();
         postMessage(liaapiConnection, board, message);
-        MessageReplyV2API messageReplyV2API = new MessageReplyV2API();
-        messageReplyV2API.postMessageReply()
     }
 
     private Board createBoard(BoardV2 boardV2) {
