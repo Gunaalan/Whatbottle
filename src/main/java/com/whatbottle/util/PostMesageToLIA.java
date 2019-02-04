@@ -10,7 +10,6 @@ import com.lithium.mineraloil.api.lia.api.v1.CategoryV1API;
 import com.lithium.mineraloil.api.lia.api.v1.models.BoardV1Response;
 import com.lithium.mineraloil.api.lia.api.v1.models.CategoryV1Response;
 import com.lithium.mineraloil.api.lia.api.v2.BoardV2API;
-import com.lithium.mineraloil.api.lia.api.v2.MessageReplyV2API;
 import com.lithium.mineraloil.api.lia.api.v2.models.BoardV2;
 import com.lithium.mineraloil.api.lia.api.v2.models.Category;
 import com.lithium.mineraloil.api.lia.api.v2.models.MessageV2Response;

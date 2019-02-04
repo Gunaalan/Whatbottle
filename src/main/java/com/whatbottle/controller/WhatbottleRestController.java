@@ -2,7 +2,11 @@ package com.whatbottle.controller;
 
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.Requests.WebhookRequest;
+<<<<<<< HEAD
 import com.whatbottle.data.Requests.WhatsAppMessage;
+=======
+import com.whatbottle.data.models.TopicMuteStatus;
+>>>>>>> master
 import com.whatbottle.service.Whatbottleservice;
 import io.smooch.client.auth.ApiKeyAuth;
 import io.smooch.client.model.MessageResponse;
@@ -10,6 +14,7 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,6 +74,13 @@ public class WhatbottleRestController {
 
     private void validateWhatsappMessage(WhatsAppMessage message) {
         //TODO
+    }
+    @RequestMapping(value = {"/topicMuteStatus"}, method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    protected ResponseEntity<?> updateSubscription(HttpServletRequest request, @RequestBody TopicMuteStatus topicMuteStatus)
+        throws Exception{
+        whatbottleservice.insertTopicMuteStatus(topicMuteStatus);
+        return new ResponseEntity<String>("Updated the subscription details",HttpStatus.OK);
+
     }
 }
 
