@@ -12049,3 +12049,774 @@ java.lang.ClassNotFoundException: okhttp3.internal.Platform
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.23.jar:8.5.23]
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
 
+2019-02-04 18:16:47.404  INFO 34714 --- [main] com.whatbottle.StartApplication          : Starting StartApplication on LT5835 with PID 34714 (/Users/raunak.bagri/Documents/whatbottle/whatbottle/target/classes started by raunak.bagri in /Users/raunak.bagri/Documents/whatbottle/whatbottle)
+2019-02-04 18:16:47.408  INFO 34714 --- [main] com.whatbottle.StartApplication          : No active profile set, falling back to default profiles: default
+2019-02-04 18:16:47.464  INFO 34714 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@470734c3: startup date [Mon Feb 04 18:16:47 IST 2019]; root of context hierarchy
+2019-02-04 18:16:48.510  INFO 34714 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'managementServletContext' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcAutoConfiguration.class]]
+2019-02-04 18:16:49.735  INFO 34714 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8001 (http)
+2019-02-04 18:16:49.750  INFO 34714 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-04 18:16:49.751  INFO 34714 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2019-02-04 18:16:49.863  INFO 34714 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-04 18:16:49.864  INFO 34714 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2403 ms
+2019-02-04 18:16:50.092  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'metricsFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2019-02-04 18:16:50.096  INFO 34714 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'applicationContextIdFilter' to: [/*]
+2019-02-04 18:16:50.798  INFO 34714 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-02-04 18:16:50.798  INFO 34714 --- [main] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2019-02-04 18:16:50.896  INFO 34714 --- [cluster-ClusterId{value='5c58343a5060d6879a9de94d', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:42}] to localhost:27017
+2019-02-04 18:16:50.898  INFO 34714 --- [cluster-ClusterId{value='5c58343a5060d6879a9de94d', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 5]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, roundTripTimeNanos=596269}
+2019-02-04 18:16:50.900  INFO 34714 --- [cluster-ClusterId{value='5c58343a5060d6879a9de94d', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Discovered cluster type of STANDALONE
+2019-02-04 18:16:51.769  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/getJwtToken],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.getJwtToken(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2019-02-04 18:16:51.773  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/postReplyMessage],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.postAMessage(javax.servlet.http.HttpServletRequest,java.lang.String,com.whatbottle.data.Requests.MessageRequest) throws java.lang.Exception
+2019-02-04 18:16:51.773  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/floodATopic],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.floodTopic(javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2019-02-04 18:16:51.774  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/webhook],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.readAMessage(javax.servlet.http.HttpServletRequest,com.whatbottle.data.Requests.WebhookRequest) throws java.lang.Exception
+2019-02-04 18:16:51.774  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/replyMessage],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.replyMessage(javax.servlet.http.HttpServletRequest,com.whatbottle.data.Requests.WhatsAppMessage) throws java.lang.Exception
+2019-02-04 18:16:51.775  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/whatbottle/topicMuteStatus],methods=[POST],consumes=[application/json]}" onto protected org.springframework.http.ResponseEntity<?> com.whatbottle.controller.WhatbottleRestController.updateSubscription(javax.servlet.http.HttpServletRequest,com.whatbottle.data.models.TopicMuteStatus) throws java.lang.Exception
+2019-02-04 18:16:51.776  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/v2/api-docs],methods=[GET]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String)
+2019-02-04 18:16:51.779  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-02-04 18:16:51.780  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-02-04 18:16:51.780  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-02-04 18:16:51.783  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-02-04 18:16:51.784  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-04 18:16:52.086  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.088  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)
+2019-02-04 18:16:52.088  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-04 18:16:52.088  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.091  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2019-02-04 18:16:52.092  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.092  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.094  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)
+2019-02-04 18:16:52.095  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/actuator || /actuator.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.hateoas.ResourceSupport org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links()
+2019-02-04 18:16:52.097  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.098  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/api/v1/whatbottle/health || /api/v1/whatbottle/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)
+2019-02-04 18:16:52.099  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.100  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+2019-02-04 18:16:52.102  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2019-02-04 18:16:52.108  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2019-02-04 18:16:52.111  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.113  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.114  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.115  INFO 34714 --- [main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-02-04 18:16:52.976  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@470734c3: startup date [Mon Feb 04 18:16:47 IST 2019]; root of context hierarchy
+2019-02-04 18:16:52.999  INFO 34714 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2019-02-04 18:16:53.262  INFO 34714 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-02-04 18:16:53.265  INFO 34714 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-02-04 18:16:53.303  INFO 34714 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2019-02-04 18:16:53.346  INFO 34714 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-02-04 18:16:53.827  INFO 34714 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-04 18:16:53.860  INFO 34714 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2019-02-04 18:16:54.028  INFO 34714 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-02-04 18:16:54.076  INFO 34714 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found {0} custom documentation plugin(s)
+2019-02-04 18:16:54.098  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-02-04 18:16:54.104  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method links was hal-json-mvc-endpoint
+2019-02-04 18:16:54.107  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: links belongs to groups: [[ResourceGroup{groupName='hal-json-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint}]] 
+2019-02-04 18:16:54.108  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method floodTopic was whatbottle-rest-controller
+2019-02-04 18:16:54.108  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: floodTopic belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.109  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getJwtToken was whatbottle-rest-controller
+2019-02-04 18:16:54.109  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getJwtToken belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.110  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was health-mvc-endpoint
+2019-02-04 18:16:54.110  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='health-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint}]] 
+2019-02-04 18:16:54.110  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method postAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.110  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: postAMessage belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.111  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method replyMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.111  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: replyMessage belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.111  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method updateSubscription was whatbottle-rest-controller
+2019-02-04 18:16:54.111  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: updateSubscription belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.112  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method readAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.112  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: readAMessage belongs to groups: [[ResourceGroup{groupName='whatbottle-rest-controller', position=0, controller=com.whatbottle.controller.WhatbottleRestController}]] 
+2019-02-04 18:16:54.113  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method findByPrincipalAndAfterAndType was audit-events-mvc-endpoint
+2019-02-04 18:16:54.113  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: findByPrincipalAndAfterAndType belongs to groups: [[ResourceGroup{groupName='audit-events-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint}]] 
+2019-02-04 18:16:54.113  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.113  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.114  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.114  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.114  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.114  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.114  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.115  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.115  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was environment-mvc-endpoint
+2019-02-04 18:16:54.115  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='environment-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint}]] 
+2019-02-04 18:16:54.115  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was environment-mvc-endpoint
+2019-02-04 18:16:54.115  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: value belongs to groups: [[ResourceGroup{groupName='environment-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint}]] 
+2019-02-04 18:16:54.116  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.116  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: error belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0, controller=org.springframework.boot.autoconfigure.web.BasicErrorController}]] 
+2019-02-04 18:16:54.116  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.116  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: errorHtml belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0, controller=org.springframework.boot.autoconfigure.web.BasicErrorController}]] 
+2019-02-04 18:16:54.117  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was heapdump-mvc-endpoint
+2019-02-04 18:16:54.117  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='heapdump-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint}]] 
+2019-02-04 18:16:54.117  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.117  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='log-file-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint}]] 
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was loggers-mvc-endpoint
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='loggers-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint}]] 
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method get was loggers-mvc-endpoint
+2019-02-04 18:16:54.118  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: get belongs to groups: [[ResourceGroup{groupName='loggers-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint}]] 
+2019-02-04 18:16:54.119  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method set was loggers-mvc-endpoint
+2019-02-04 18:16:54.119  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: set belongs to groups: [[ResourceGroup{groupName='loggers-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint}]] 
+2019-02-04 18:16:54.119  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.119  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.120  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was metrics-mvc-endpoint
+2019-02-04 18:16:54.120  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='metrics-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint}]] 
+2019-02-04 18:16:54.120  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was metrics-mvc-endpoint
+2019-02-04 18:16:54.120  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: value belongs to groups: [[ResourceGroup{groupName='metrics-mvc-endpoint', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint}]] 
+2019-02-04 18:16:54.121  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.121  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: invoke belongs to groups: [[ResourceGroup{groupName='endpoint-mvc-adapter', position=0, controller=org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter}]] 
+2019-02-04 18:16:54.124  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/loggers-mvc-endpoint Description: loggers-mvc-endpoint Position: 0
+2019-02-04 18:16:54.125  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/metrics-mvc-endpoint Description: metrics-mvc-endpoint Position: 0
+2019-02-04 18:16:54.126  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/hal-json-mvc-endpoint Description: hal-json-mvc-endpoint Position: 0
+2019-02-04 18:16:54.126  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/audit-events-mvc-endpoint Description: audit-events-mvc-endpoint Position: 0
+2019-02-04 18:16:54.126  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/environment-mvc-endpoint Description: environment-mvc-endpoint Position: 0
+2019-02-04 18:16:54.126  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/health-mvc-endpoint Description: health-mvc-endpoint Position: 0
+2019-02-04 18:16:54.127  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/whatbottle-rest-controller Description: whatbottle-rest-controller Position: 0
+2019-02-04 18:16:54.127  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/basic-error-controller Description: basic-error-controller Position: 0
+2019-02-04 18:16:54.127  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/heapdump-mvc-endpoint Description: heapdump-mvc-endpoint Position: 0
+2019-02-04 18:16:54.127  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/endpoint-mvc-adapter Description: endpoint-mvc-adapter Position: 0
+2019-02-04 18:16:54.128  INFO 34714 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /Whatbottle Services/log-file-mvc-endpoint Description: log-file-mvc-endpoint Position: 0
+2019-02-04 18:16:54.156  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.157  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.161  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.161  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.176  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /auditevents.org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.176  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /auditevents.org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.228  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method findByPrincipalAndAfterAndType was audit-events-mvc-endpoint
+2019-02-04 18:16:54.242  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method findByPrincipalAndAfterAndType was audit-events-mvc-endpoint
+2019-02-04 18:16:54.264  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /auditevents.json.org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.264  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /auditevents.json.org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.276  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method findByPrincipalAndAfterAndType was audit-events-mvc-endpoint
+2019-02-04 18:16:54.279  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method findByPrincipalAndAfterAndType was audit-events-mvc-endpoint
+2019-02-04 18:16:54.282  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByPrincipalAndAfterAndTypeUsingGET_1
+2019-02-04 18:16:54.319  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.util.Map<java.lang.String,java.lang.Object>(true)
+2019-02-04 18:16:54.319  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.util.Map<java.lang.String,java.lang.Object>(true)
+2019-02-04 18:16:54.320  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.util.Map<java.lang.String,java.lang.Object>(true)
+2019-02-04 18:16:54.320  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.util.Map<java.lang.String,java.lang.Object>(true)
+2019-02-04 18:16:54.320  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /error.org.springframework.boot.autoconfigure.web.BasicErrorController.error.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.320  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /error.org.springframework.boot.autoconfigure.web.BasicErrorController.error.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.323  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.324  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.325  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.327  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.328  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.329  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.331  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.340  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.345  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.351  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.357  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.359  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.360  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.362  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.363  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.364  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2019-02-04 18:16:54.365  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.366  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.368  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.368  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.410  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.410  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.412  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.413  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.web.servlet.ModelAndView(true)
+2019-02-04 18:16:54.419  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.web.servlet.View(true)
+2019-02-04 18:16:54.419  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.web.servlet.View(true)
+2019-02-04 18:16:54.423  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.web.servlet.View(true)
+2019-02-04 18:16:54.424  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.web.servlet.View(true)
+2019-02-04 18:16:54.425  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /error.org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.425  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /error.org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.426  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.427  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.429  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.430  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.432  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.433  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.436  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.444  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.448  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.449  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.450  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.451  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.453  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.454  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.455  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.456  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2019-02-04 18:16:54.458  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.459  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.459  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.459  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.459  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /autoconfig.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.460  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /autoconfig.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.460  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.461  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.462  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /autoconfig.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.462  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /autoconfig.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.462  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.463  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.463  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_1
+2019-02-04 18:16:54.464  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.464  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.464  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.464  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.465  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /beans.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.465  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /beans.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.465  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.466  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.466  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_2
+2019-02-04 18:16:54.466  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /beans.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.467  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /beans.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.467  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.468  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.468  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_3
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /configprops.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.469  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /configprops.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.470  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.471  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.471  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_4
+2019-02-04 18:16:54.472  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /configprops.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.472  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /configprops.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.472  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.473  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.473  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_5
+2019-02-04 18:16:54.474  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.474  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.474  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.475  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.475  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /dump.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.475  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /dump.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.476  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.476  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.477  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_6
+2019-02-04 18:16:54.477  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /dump.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.478  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /dump.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.478  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.479  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.479  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_7
+2019-02-04 18:16:54.480  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.480  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.481  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.481  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.481  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /info.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.481  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /info.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.482  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.483  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.483  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_8
+2019-02-04 18:16:54.484  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /info.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.484  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /info.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.484  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.485  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.485  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_9
+2019-02-04 18:16:54.486  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.486  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.486  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.486  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.487  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /mappings.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.487  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /mappings.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.487  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.488  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.488  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_10
+2019-02-04 18:16:54.489  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /mappings.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.489  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /mappings.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.490  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.490  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.491  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_11
+2019-02-04 18:16:54.491  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.492  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.492  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.492  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.492  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /trace.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.493  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /trace.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.493  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.494  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.494  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_12
+2019-02-04 18:16:54.495  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /trace.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.495  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /trace.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.495  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.496  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was endpoint-mvc-adapter
+2019-02-04 18:16:54.496  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_13
+2019-02-04 18:16:54.499  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.499  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.499  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.499  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.500  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /env.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.500  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /env.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.502  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was environment-mvc-endpoint
+2019-02-04 18:16:54.503  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was environment-mvc-endpoint
+2019-02-04 18:16:54.504  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_14
+2019-02-04 18:16:54.505  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /env.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.505  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /env.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.506  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was environment-mvc-endpoint
+2019-02-04 18:16:54.507  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was environment-mvc-endpoint
+2019-02-04 18:16:54.507  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_15
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /env/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.509  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /env/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.512  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was environment-mvc-endpoint
+2019-02-04 18:16:54.522  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was environment-mvc-endpoint
+2019-02-04 18:16:54.524  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.524  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.525  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.525  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.536  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.538  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.540  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.542  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.hateoas.ResourceSupport(true)
+2019-02-04 18:16:54.545  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.hateoas.Link(true)
+2019-02-04 18:16:54.545  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.hateoas.Link(true)
+2019-02-04 18:16:54.552  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: org.springframework.hateoas.Link(true)
+2019-02-04 18:16:54.552  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key org.springframework.hateoas.Link(true)
+2019-02-04 18:16:54.553  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /actuator.org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.553  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /actuator.org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.554  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method links was hal-json-mvc-endpoint
+2019-02-04 18:16:54.556  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method links was hal-json-mvc-endpoint
+2019-02-04 18:16:54.559  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /actuator.json.org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.559  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /actuator.json.org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.565  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method links was hal-json-mvc-endpoint
+2019-02-04 18:16:54.573  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method links was hal-json-mvc-endpoint
+2019-02-04 18:16:54.574  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: linksUsingGET_1
+2019-02-04 18:16:54.578  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.578  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.578  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.578  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.579  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/health.org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.579  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/health.org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.581  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was health-mvc-endpoint
+2019-02-04 18:16:54.592  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was health-mvc-endpoint
+2019-02-04 18:16:54.595  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_16
+2019-02-04 18:16:54.596  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/health.json.org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.596  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/health.json.org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.598  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was health-mvc-endpoint
+2019-02-04 18:16:54.601  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was health-mvc-endpoint
+2019-02-04 18:16:54.601  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_17
+2019-02-04 18:16:54.604  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Void(true)
+2019-02-04 18:16:54.604  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Void(true)
+2019-02-04 18:16:54.604  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Void(true)
+2019-02-04 18:16:54.604  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Void(true)
+2019-02-04 18:16:54.605  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /heapdump.org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.605  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /heapdump.org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.615  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was heapdump-mvc-endpoint
+2019-02-04 18:16:54.620  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was heapdump-mvc-endpoint
+2019-02-04 18:16:54.621  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_18
+2019-02-04 18:16:54.622  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /heapdump.json.org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.622  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /heapdump.json.org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.624  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was heapdump-mvc-endpoint
+2019-02-04 18:16:54.626  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was heapdump-mvc-endpoint
+2019-02-04 18:16:54.628  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_19
+2019-02-04 18:16:54.637  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Void(true)
+2019-02-04 18:16:54.638  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Void(true)
+2019-02-04 18:16:54.641  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Void(true)
+2019-02-04 18:16:54.641  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Void(true)
+2019-02-04 18:16:54.641  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /logfile.org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.641  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /logfile.org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.642  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.644  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.645  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_20
+2019-02-04 18:16:54.647  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.649  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.654  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /logfile.json.org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.655  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /logfile.json.org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.659  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.666  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.669  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_21
+2019-02-04 18:16:54.671  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.673  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was log-file-mvc-endpoint
+2019-02-04 18:16:54.674  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingHEAD_1
+2019-02-04 18:16:54.677  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.677  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.677  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.677  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.678  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /loggers/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.678  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /loggers/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.680  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method get was loggers-mvc-endpoint
+2019-02-04 18:16:54.684  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method get was loggers-mvc-endpoint
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /loggers.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.687  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /loggers.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.688  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was loggers-mvc-endpoint
+2019-02-04 18:16:54.690  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was loggers-mvc-endpoint
+2019-02-04 18:16:54.691  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_22
+2019-02-04 18:16:54.691  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /loggers.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.691  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /loggers.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.692  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was loggers-mvc-endpoint
+2019-02-04 18:16:54.693  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was loggers-mvc-endpoint
+2019-02-04 18:16:54.694  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_23
+2019-02-04 18:16:54.696  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.696  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.696  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.696  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.696  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.697  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key java.util.Map<java.lang.String,java.lang.String>(false)
+2019-02-04 18:16:54.698  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.698  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.699  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.699  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.699  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /loggers/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.699  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /loggers/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.702  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method set was loggers-mvc-endpoint
+2019-02-04 18:16:54.705  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method set was loggers-mvc-endpoint
+2019-02-04 18:16:54.708  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.708  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.708  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.709  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.709  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /metrics.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.709  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /metrics.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.710  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was metrics-mvc-endpoint
+2019-02-04 18:16:54.710  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was metrics-mvc-endpoint
+2019-02-04 18:16:54.711  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_24
+2019-02-04 18:16:54.711  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /metrics.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.711  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /metrics.json.org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.712  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was metrics-mvc-endpoint
+2019-02-04 18:16:54.712  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method invoke was metrics-mvc-endpoint
+2019-02-04 18:16:54.713  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: invokeUsingGET_25
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /metrics/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.714  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /metrics/{name:.*}.org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.719  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was metrics-mvc-endpoint
+2019-02-04 18:16:54.725  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method value was metrics-mvc-endpoint
+2019-02-04 18:16:54.725  INFO 34714 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: valueUsingGET_1
+2019-02-04 18:16:54.727  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.727  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.727  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.727  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.727  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/floodATopic.com.whatbottle.controller.WhatbottleRestController.floodTopic.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.728  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/floodATopic.com.whatbottle.controller.WhatbottleRestController.floodTopic.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.729  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method floodTopic was whatbottle-rest-controller
+2019-02-04 18:16:54.730  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method floodTopic was whatbottle-rest-controller
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/getJwtToken.com.whatbottle.controller.WhatbottleRestController.getJwtToken.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.731  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/getJwtToken.com.whatbottle.controller.WhatbottleRestController.getJwtToken.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.732  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getJwtToken was whatbottle-rest-controller
+2019-02-04 18:16:54.735  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getJwtToken was whatbottle-rest-controller
+2019-02-04 18:16:54.744  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.744  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.745  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.746  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.749  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.749  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.749  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.749  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.MessageRequest(false)
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/postReplyMessage.com.whatbottle.controller.WhatbottleRestController.postAMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.750  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/postReplyMessage.com.whatbottle.controller.WhatbottleRestController.postAMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.753  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method postAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.754  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method postAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.756  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.756  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.756  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.756  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.770  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.771  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.772  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.772  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.WebhookRequest(false)
+2019-02-04 18:16:54.772  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.App(false)
+2019-02-04 18:16:54.772  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.App(false)
+2019-02-04 18:16:54.796  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.797  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.806  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.806  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.807  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Message(false)
+2019-02-04 18:16:54.807  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Message(false)
+2019-02-04 18:16:54.840  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Source(false)
+2019-02-04 18:16:54.840  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Source(false)
+2019-02-04 18:16:54.843  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.MessageItem(false)
+2019-02-04 18:16:54.843  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.MessageItem(false)
+2019-02-04 18:16:54.847  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.847  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.872  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.872  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.873  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.DisplaySettings(false)
+2019-02-04 18:16:54.873  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.DisplaySettings(false)
+2019-02-04 18:16:54.875  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.AppUser(false)
+2019-02-04 18:16:54.875  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.AppUser(false)
+2019-02-04 18:16:54.901  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.902  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.915  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.916  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.928  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.929  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.930  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.931  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.936  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.App(false)
+2019-02-04 18:16:54.936  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.App(false)
+2019-02-04 18:16:54.939  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.939  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.AppSettings(false)
+2019-02-04 18:16:54.942  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Message(false)
+2019-02-04 18:16:54.942  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Message(false)
+2019-02-04 18:16:54.943  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Source(false)
+2019-02-04 18:16:54.943  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Source(false)
+2019-02-04 18:16:54.943  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.MessageItem(false)
+2019-02-04 18:16:54.943  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.MessageItem(false)
+2019-02-04 18:16:54.944  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.944  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Action(false)
+2019-02-04 18:16:54.944  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.DisplaySettings(false)
+2019-02-04 18:16:54.944  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.DisplaySettings(false)
+2019-02-04 18:16:54.945  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.AppUser(false)
+2019-02-04 18:16:54.945  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.AppUser(false)
+2019-02-04 18:16:54.945  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.945  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.Client(false)
+2019-02-04 18:16:54.946  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.946  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key io.smooch.client.model.ClientInfo(false)
+2019-02-04 18:16:54.946  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.946  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.947  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.947  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.947  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/webhook.com.whatbottle.controller.WhatbottleRestController.readAMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.947  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/webhook.com.whatbottle.controller.WhatbottleRestController.readAMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.950  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method readAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.951  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method readAMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.956  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.957  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.958  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.959  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.968  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.969  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.970  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.970  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.Requests.WhatsAppMessage(false)
+2019-02-04 18:16:54.971  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.971  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.971  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.971  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.972  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/replyMessage.com.whatbottle.controller.WhatbottleRestController.replyMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.972  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/replyMessage.com.whatbottle.controller.WhatbottleRestController.replyMessage.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.975  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method replyMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.983  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method replyMessage was whatbottle-rest-controller
+2019-02-04 18:16:54.988  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.989  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.989  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.989  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.990  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.990  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.s.p.ModelPropertiesKeyGenerator      : Cache key generated: com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelProperties with key com.whatbottle.data.models.TopicMuteStatus(false)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache models with key java.lang.Object(true)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.schema.ModelContextKeyGenerator      : Cache Key Generated: java.lang.Object(true)
+2019-02-04 18:16:54.991  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache modelDependencies with key java.lang.Object(true)
+2019-02-04 18:16:54.992  INFO 34714 --- [main] s.d.spring.web.OperationsKeyGenerator    : Cache key generated: /api/v1/whatbottle/topicMuteStatus.com.whatbottle.controller.WhatbottleRestController.updateSubscription.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.992  INFO 34714 --- [main] s.d.spring.web.caching.CachingAspect     : Caching aspect applied for cache operations with key /api/v1/whatbottle/topicMuteStatus.com.whatbottle.controller.WhatbottleRestController.updateSubscription.DefaultGenericTypeNamingStrategy
+2019-02-04 18:16:54.994  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method updateSubscription was whatbottle-rest-controller
+2019-02-04 18:16:54.995  INFO 34714 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method updateSubscription was whatbottle-rest-controller
+2019-02-04 18:16:55.248  INFO 34714 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8001 (http)
+2019-02-04 18:16:55.273  INFO 34714 --- [main] com.whatbottle.StartApplication          : Started StartApplication in 8.556 seconds (JVM running for 9.67)
+2019-02-04 18:16:55.273  INFO 34714 --- [main] com.whatbottle.StartApplication          : Whatbottle Service Started!!
+2019-02-04 18:42:57.200  INFO 34714 --- [http-nio-8001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-04 18:42:57.206  INFO 34714 --- [http-nio-8001-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-02-04 18:42:57.227  INFO 34714 --- [http-nio-8001-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2019-02-04 18:42:57.334  INFO 34714 --- [http-nio-8001-exec-1] c.w.controller.WhatbottleRestController  : WebhookRequest(trigger=message:appUser, app=class App {
+    id: null
+    appToken: null
+    name: null
+    settings: null
+    metadata: null
+}, messages=[class Message {
+    id: null
+    authorId: 958fc1dd735bc14729820294
+    role: appUser
+    type: text
+    source: class Source {
+        id: null
+        type: whatsapp
+    }
+    name: Raunak Bagri
+    text: Hello
+    email: null
+    avatarUrl: null
+    received: 1.549285976915E9
+    mediaUrl: null
+    mediaType: null
+    metadata: null
+    items: null
+    actions: null
+    payload: null
+    displaySettings: null
+}], appUser=class AppUser {
+    id: null
+    userId: null
+    givenName: Raunak
+    surname: Bagri
+    email: null
+    signedUpAt: 2019-02-01T12:11:41.783Z
+    properties: {}
+    conversationStarted: true
+    clients: [class Client {
+        id: 359fe6c4-ba80-431f-8716-7fda65647d86
+        active: true
+        lastSeen: 2019-02-04T13:12:56.912Z
+        platform: whatsapp
+        integrationId: 5c54372b0bd6e200228634ea
+        pushNotificationToken: null
+        appVersion: null
+        displayName: +91 95382 75466
+        info: null
+        raw: {from=919538275466, profile={name=Raunak Bagri}}
+    }]
+    pendingClients: []
+}, version=v1)
+2019-02-04 18:42:58.768  INFO 34714 --- [http-nio-8001-exec-1] com.whatbottle.util.WhatbottleHelper     : Successfully posted -> response: class MessageResponse {
+    message: class Message {
+        id: 5c583a5ad04f1800227b1b91
+        authorId: 00ubo5auzzt5vbsl90h7
+        role: appMaker
+        type: text
+        source: class Source {
+            id: null
+            type: api
+        }
+        name: null
+        text: *Whatbottle*
+        Hello Raunak Bagri
+        email: null
+        avatarUrl: https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm
+        received: 1.549285978615E9
+        mediaUrl: null
+        mediaType: null
+        metadata: null
+        items: null
+        actions: null
+        payload: null
+        displaySettings: null
+    }
+    extraMessages: null
+    conversation: class Conversation {
+        id: 91b9ccad2b4f7ddb9d50e60a
+        unreadCount: 1
+    }
+}
+2019-02-04 18:42:59.035  INFO 34714 --- [http-nio-8001-exec-1] com.whatbottle.util.WhatbottleHelper     : Successfully posted -> response: class MessageResponse {
+    message: class Message {
+        id: 5c583a5ac21545002209cae5
+        authorId: 00ubo5auzzt5vbsl90h7
+        role: appMaker
+        type: text
+        source: class Source {
+            id: null
+            type: api
+        }
+        name: null
+        text: *Whatbottle*
+        *1.* Ask a question
+        *2.* Show Trending Topics
+        *3.* Unanswered questions 
+        *4.* Mute a Topic
+        *5.* Unmute a Topic
+        *6.* Do nothing!
+        _Please enter your option_
+        email: null
+        avatarUrl: https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm
+        received: 1.549285978899E9
+        mediaUrl: null
+        mediaType: null
+        metadata: null
+        items: null
+        actions: null
+        payload: null
+        displaySettings: null
+    }
+    extraMessages: null
+    conversation: class Conversation {
+        id: 91b9ccad2b4f7ddb9d50e60a
+        unreadCount: 2
+    }
+}
+2019-02-04 19:07:02.671  INFO 34714 --- [http-nio-8001-exec-2] c.w.controller.WhatbottleRestController  : WebhookRequest(trigger=message:appUser, app=class App {
+    id: null
+    appToken: null
+    name: null
+    settings: null
+    metadata: null
+}, messages=[class Message {
+    id: null
+    authorId: 958fc1dd735bc14729820294
+    role: appUser
+    type: text
+    source: class Source {
+        id: null
+        type: whatsapp
+    }
+    name: Raunak Bagri
+    text: 6
+    email: null
+    avatarUrl: null
+    received: 1.549287422336E9
+    mediaUrl: null
+    mediaType: null
+    metadata: null
+    items: null
+    actions: null
+    payload: null
+    displaySettings: null
+}], appUser=class AppUser {
+    id: null
+    userId: null
+    givenName: Raunak
+    surname: Bagri
+    email: null
+    signedUpAt: 2019-02-01T12:11:41.783Z
+    properties: {}
+    conversationStarted: true
+    clients: [class Client {
+        id: 359fe6c4-ba80-431f-8716-7fda65647d86
+        active: true
+        lastSeen: 2019-02-04T13:37:02.330Z
+        platform: whatsapp
+        integrationId: 5c54372b0bd6e200228634ea
+        pushNotificationToken: null
+        appVersion: null
+        displayName: +91 95382 75466
+        info: null
+        raw: {from=919538275466, profile={name=Raunak Bagri}}
+    }]
+    pendingClients: []
+}, version=v1)
+2019-02-04 19:07:03.922  INFO 34714 --- [http-nio-8001-exec-2] com.whatbottle.util.WhatbottleHelper     : Successfully posted -> response: class MessageResponse {
+    message: class Message {
+        id: 5c583fff49d76500223d2bcb
+        authorId: 00ubo5auzzt5vbsl90h7
+        role: appMaker
+        type: text
+        source: class Source {
+            id: null
+            type: api
+        }
+        name: null
+        text: *Whatbottle*
+        Glad to help You! Have a great day ahead 😄
+        email: null
+        avatarUrl: https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm
+        received: 1.549287423797E9
+        mediaUrl: null
+        mediaType: null
+        metadata: null
+        items: null
+        actions: null
+        payload: null
+        displaySettings: null
+    }
+    extraMessages: null
+    conversation: class Conversation {
+        id: 91b9ccad2b4f7ddb9d50e60a
+        unreadCount: 1
+    }
+}
+2019-02-04 19:07:03.967  INFO 34714 --- [http-nio-8001-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:43}] to localhost:27017

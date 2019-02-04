@@ -4,10 +4,15 @@ import com.google.gson.Gson;
 import com.linkedin.urls.Url;
 import com.whatbottle.data.Requests.MessageRequest;
 import com.whatbottle.data.models.*;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -42,7 +47,7 @@ public class WhatbottleUtils {
     }
 
     public static TriggerResponse triggerHttpCall(String jsonBody,String url) {
-        TriggerResponse triggerResponse = null;
+        TriggerResponse triggerResponse = new TriggerResponse();
         log.info("-json to post-" + jsonBody);
         log.info("call back url is : " + url);
         HttpPost request = getPostRequest(url);
@@ -52,7 +57,7 @@ public class WhatbottleUtils {
             try (CloseableHttpResponse response = requester.getHttp().send(
                     request)) {
                 int statusCode = response.getStatusLine().getStatusCode();
-                String message = response.getStatusLine().getReasonPhrase();
+                String message = EntityUtils.toString(response.getEntity());
                 triggerResponse.setStatus(statusCode);
                 triggerResponse.setMessage(message);
                 log.info("-responseJson-" + triggerResponse.toString());
@@ -65,6 +70,13 @@ public class WhatbottleUtils {
             log.error("Error in parsing triggerResponse ");
         }
         return triggerResponse;
+    }
+
+    public static String postHttpRequest(String baseURI,String resource,String body) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseURI)
+                .body(body);
+        return requestSpecification.post(resource).getBody().asString();
     }
 
     public static HttpPost getPostRequest(String url) {
